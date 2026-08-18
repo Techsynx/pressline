@@ -189,7 +189,7 @@ a {
 }
 
 /* ==========================================================================
-   NAVIGATION (GITHUB OPTION REMOVED)
+   NAVIGATION
    ========================================================================== */
 nav {
   position: sticky;
@@ -581,7 +581,7 @@ nav {
 }
 
 /* ==========================================================================
-   3D ISOMETRIC ARCHITECTURE STACK SECTION (FIXED NO COLLAPSE)
+   3D ISOMETRIC ARCHITECTURE STACK SECTION
    ========================================================================== */
 .isometric-stack-section {
   padding: 90px 0;
@@ -665,9 +665,8 @@ nav {
   filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
 }
 
-/* Base transforms preserved via CSS variable translate to prevent collapse */
 .iso-plane-layer {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  transition: opacity 0.4s ease;
   cursor: pointer;
 }
 
@@ -681,85 +680,179 @@ nav {
 }
 
 /* ==========================================================================
-   ARCHITECTURE PLAN SECTION (NATIVE HIGH-TECH FLOWCHART REDESIGN)
+   ARCHITECTURE PLAN — SLIM 6-NODE HORIZONTAL STEPPER & EXPANDABLE DRAWER
    ========================================================================== */
 .architecture-plan-section {
-  padding: 100px 0;
+  padding: 90px 0;
   position: relative;
   background: var(--color-black);
   border-bottom: 1px solid var(--color-stroke-3);
 }
 
-.flowchart-container {
+/* Horizontal Timeline Container */
+.stepper-timeline-outer {
+  position: relative;
+  width: 100%;
+  margin: 0 auto 36px;
+}
+
+.stepper-scroll-wrap {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 0 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stepper-scroll-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+/* Continuous Pulse Connecting Line Behind Nodes */
+.stepper-connecting-line {
+  position: absolute;
+  top: 36px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(84, 80, 78, 0.5) 0%, rgba(255, 139, 62, 0.8) 50%, rgba(84, 80, 78, 0.5) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stepper-connecting-line::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: #ff8b3e;
+  border-radius: 2px;
+  box-shadow: 0 0 12px #ff8b3e;
+  animation: linePulse 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes linePulse {
+  0% { left: 0%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 95%; opacity: 0; }
+}
+
+/* Individual Stepper Node */
+.stepper-node {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-width: 140px;
+  max-width: 180px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  max-width: 960px;
-  margin: 0 auto;
-  position: relative;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 0 8px;
+  transition: transform 0.2s ease;
 }
 
-/* Flowchart Stage Block */
-.flow-stage {
-  position: relative;
-  background: var(--color-night);
+.stepper-node:hover {
+  transform: translateY(-2px);
+}
+
+.stepper-node-bubble {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  background: var(--color-midnight);
   border: 1px solid var(--color-stroke-3);
-  padding: 24px;
-  transition: all 0.3s ease;
-}
-
-.flow-stage:hover {
-  border-color: var(--color-sun);
-  box-shadow: 0 0 25px rgba(255, 139, 62, 0.08);
-}
-
-.flow-stage-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(223, 216, 211, 0.08);
-}
-
-.flow-stage-title {
+  justify-content: center;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
   color: var(--color-dust);
-  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.flow-stage-badge {
-  font-family: var(--font-mono);
-  font-size: 10px;
+.stepper-node.active .stepper-node-bubble {
+  background: rgba(255, 139, 62, 0.15);
+  border-color: var(--color-sun);
   color: var(--color-sun);
-  background: rgba(255, 139, 62, 0.12);
-  padding: 2px 8px;
-  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(255, 139, 62, 0.3);
 }
 
-.flow-cards-grid {
+.stepper-node-title {
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-dust);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.stepper-node.active .stepper-node-title {
+  color: var(--color-sun);
+}
+
+.stepper-node-desc {
+  font-size: 11px;
+  color: var(--color-stroke-2);
+  line-height: 1.35;
+}
+
+/* Expandable Drawer Card */
+.stepper-drawer-pane {
+  background: var(--color-night);
+  border: 1px solid var(--color-stroke-3);
+  padding: 24px;
+  margin-top: 10px;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(223, 216, 211, 0.08);
+}
+
+.drawer-header h3 {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-dust);
+}
+
+.drawer-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
+  gap: 12px;
 }
 
-.flow-node-card {
+.drawer-subcard {
   background: var(--color-midnight);
   border: 1px solid var(--color-stroke-3);
   padding: 14px;
-  border-radius: 3px;
-  position: relative;
-  transition: all 0.2s ease;
+  border-radius: 2px;
+  transition: border-color 0.2s ease;
 }
 
-.flow-node-card:hover {
+.drawer-subcard:hover {
   border-color: var(--color-sun);
-  transform: translateY(-2px);
 }
 
-.flow-node-title {
+.drawer-subcard-title {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
@@ -767,87 +860,15 @@ nav {
   margin-bottom: 4px;
 }
 
-.flow-node-desc {
-  font-size: 12px;
+.drawer-subcard-desc {
+  font-size: 11.5px;
   color: var(--color-stroke-2);
-  line-height: 1.4;
-}
-
-/* Flow Connector Arrow */
-.flow-arrow-down {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 24px;
-  position: relative;
-}
-
-.flow-arrow-line {
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--color-stroke-3), var(--color-sun));
-  position: relative;
-}
-
-.flow-arrow-line::after {
-  content: '▼';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 8px;
-  color: var(--color-sun);
-}
-
-/* Decision Node Diamond Box */
-.decision-node-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 0;
-}
-
-.decision-diamond {
-  background: rgba(255, 139, 62, 0.1);
-  border: 1px solid var(--color-sun);
-  padding: 12px 28px;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--color-sun);
-  border-radius: 2px;
-  box-shadow: 0 0 20px rgba(255, 139, 62, 0.15);
-}
-
-.decision-branch-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 14px;
-}
-
-.branch-pass {
-  background: rgba(34, 197, 94, 0.08);
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  padding: 12px;
-  border-radius: 2px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-}
-
-.branch-retry {
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  padding: 12px;
-  border-radius: 2px;
-  font-family: var(--font-mono);
-  font-size: 12px;
+  line-height: 1.45;
 }
 
 /* ==========================================================================
    INTERACTIVE 8-AGENT NEURAL PIPELINE
-   ========================================================================= */
+   ========================================================================== */
 .section-wrapper {
   padding: 90px 0;
   position: relative;
@@ -1224,12 +1245,13 @@ footer {
   .audit-split-grid { grid-template-columns: 1fr; }
   .pricing-matrix-arrakis { grid-template-columns: 1fr; }
   .cta-deploy-block { padding: 32px 16px; }
+  .stepper-scroll-wrap { justify-content: flex-start; gap: 12px; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION (GITHUB OPTION REMOVED) -->
+<!-- NAVIGATION -->
 <nav>
   <div class="container nav-inner">
     <a href="/" class="nav-brand" aria-label="Pressline Home">
@@ -1337,7 +1359,7 @@ footer {
   </div>
 </header>
 
-<!-- ARRAKIS "THE PROBLEM" ORBIT SHOWCASE & ANIMATED FLOATING CARDS -->
+<!-- ARRAKIS "THE PROBLEM" ORBIT SHOWCASE -->
 <section class="problem-orbit-section">
   <div class="container">
     <div class="problem-orbit-container">
@@ -1381,7 +1403,7 @@ footer {
   </div>
 </section>
 
-<!-- 3D ISOMETRIC ARCHITECTURE STACK SECTION (FIXED BASE TRANSFORMS) -->
+<!-- 3D ISOMETRIC ARCHITECTURE STACK SECTION -->
 <section id="stack" class="isometric-stack-section">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
@@ -1429,8 +1451,8 @@ footer {
 
           <!-- Layer 1 (Bottom: Data Intake) -->
           <g id="iso-layer-1" class="iso-plane-layer" transform="translate(20, 230)" onmouseenter="highlightStackLayer(1)" onmouseleave="resetStackLayers()">
+            <polygon points="180,0 340,80 340,110 180,190 20,110 20,80" fill="rgba(20, 16, 14, 0.95)" stroke="#54504e" stroke-width="1.5"/>
             <polygon points="180,0 340,80 180,160 20,80" fill="rgba(39, 34, 31, 0.95)" stroke="#54504e" stroke-width="2"/>
-            <polygon points="180,160 340,80 340,110 180,190 20,110 20,80" fill="rgba(20, 16, 14, 0.95)" stroke="#54504e" stroke-width="1.5"/>
             <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ff8b3e">01 // DATA INTAKE</text>
           </g>
         </svg>
@@ -1454,165 +1476,75 @@ footer {
   </div>
 </section>
 
-<!-- ARCHITECTURE PLAN SECTION (RECODED NATIVE FLOWCHART WITH LIVE CONNECTORS) -->
+<!-- ARCHITECTURE PLAN — SLIM 6-NODE HORIZONTAL STEPPER & EXPANDABLE DRAWER -->
 <section id="flowchart" class="architecture-plan-section">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
-      <div class="mono-label">END-TO-END SPECIFICATION</div>
+      <div class="mono-label">END-TO-END PIPELINE</div>
       <h2>Architecture Plan</h2>
-      <p>The complete 6-stage lifecycle from raw trigger to verified live deployment.</p>
+      <p>A slim sequential workflow. Click any phase below to inspect internal agent operations.</p>
     </div>
 
-    <div class="flowchart-container scroll-reveal">
-      <!-- Stage 1: Core Data Sources -->
-      <div class="flow-stage square-corner-frame">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flow-stage-header">
-          <div class="flow-stage-title">1. Core Data Sources &amp; Automated Triggers</div>
-          <div class="flow-stage-badge">CRON 3X DAILY + JITTER</div>
+    <!-- Horizontal Stepper Row -->
+    <div class="stepper-timeline-outer scroll-reveal">
+      <div class="stepper-connecting-line"></div>
+      
+      <div class="stepper-scroll-wrap">
+        <!-- Node 1 -->
+        <div class="stepper-node active" onclick="selectStep(0)">
+          <div class="stepper-node-bubble">01</div>
+          <div class="stepper-node-title">Data Sources</div>
+          <div class="stepper-node-desc">KB &amp; search drivers</div>
         </div>
-        <div class="flow-cards-grid">
-          <div class="flow-node-card">
-            <div class="flow-node-title">Search Catalysts</div>
-            <div class="flow-node-desc">2026 Real Estate Drivers &amp; Queries</div>
-          </div>
-          <div class="flow-node-card">
-            <div class="flow-node-title">History Database</div>
-            <div class="flow-node-desc">posts.json (100% Deduplication)</div>
-          </div>
-          <div class="flow-node-card">
-            <div class="flow-node-title">Ground-Truth KB</div>
-            <div class="flow-node-desc">knowledgeBase.js Verified Rules</div>
-          </div>
-          <div class="flow-node-card">
-            <div class="flow-node-title">Actions Scheduler</div>
-            <div class="flow-node-desc">Random Jitter 3-25 mins (Anti-Bot)</div>
-          </div>
+
+        <!-- Node 2 -->
+        <div class="stepper-node" onclick="selectStep(1)">
+          <div class="stepper-node-bubble">02</div>
+          <div class="stepper-node-title">Discovery</div>
+          <div class="stepper-node-desc">AI trend synthesis</div>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="stepper-node" onclick="selectStep(2)">
+          <div class="stepper-node-bubble">03</div>
+          <div class="stepper-node-title">Drafting</div>
+          <div class="stepper-node-desc">Fact-verified copy</div>
+        </div>
+
+        <!-- Node 4 -->
+        <div class="stepper-node" onclick="selectStep(3)">
+          <div class="stepper-node-bubble">04</div>
+          <div class="stepper-node-title">Quality Gate</div>
+          <div class="stepper-node-desc">ZeroGPT &lt; 15% check</div>
+        </div>
+
+        <!-- Node 5 -->
+        <div class="stepper-node" onclick="selectStep(4)">
+          <div class="stepper-node-bubble">05</div>
+          <div class="stepper-node-title">Asset Build</div>
+          <div class="stepper-node-desc">SVG covers &amp; Schema</div>
+        </div>
+
+        <!-- Node 6 -->
+        <div class="stepper-node" onclick="selectStep(5)">
+          <div class="stepper-node-bubble">06</div>
+          <div class="stepper-node-title">Deploy</div>
+          <div class="stepper-node-desc">SSH sync &amp; Git push</div>
         </div>
       </div>
 
-      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
-
-      <!-- Stage 2: Trend & Keyword Discovery -->
-      <div class="flow-stage square-corner-frame">
+      <!-- Expandable Detail Drawer Below Stepper -->
+      <div class="stepper-drawer-pane square-corner-frame" id="stepperDrawer">
         <div class="corner-tl"></div><div class="corner-tr"></div>
         <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flow-stage-header">
-          <div class="flow-stage-title">2. Trend &amp; Keyword Discovery</div>
-          <div class="flow-stage-badge">AGENT 1 // GROQ + GEMINI</div>
-        </div>
         
-        <div class="decision-node-wrap">
-          <div class="decision-diamond">AI Trend Discovery Engine</div>
+        <div class="drawer-header">
+          <h3 id="drawerPhaseTitle">Phase 1: Core Data Sources &amp; Triggers</h3>
+          <div class="mono-label pulse-green" id="drawerPhaseBadge">INGESTION ACTIVE</div>
         </div>
 
-        <div class="flow-cards-grid" style="margin-top: 16px;">
-          <div class="flow-node-card">
-            <div class="flow-node-title">100% Unique Long-Tail SEO</div>
-            <div class="flow-node-desc">Title &amp; Canonical URL Slug</div>
-          </div>
-          <div class="flow-node-card">
-            <div class="flow-node-title">Commercial Keywords</div>
-            <div class="flow-node-desc">High-Intent Buyer Search Intent</div>
-          </div>
-          <div class="flow-node-card">
-            <div class="flow-node-title">Archetype Assignment</div>
-            <div class="flow-node-desc">Deep-Dive / Matrix / Legal / Editorial</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
-
-      <!-- Stage 3: Architecture & Fact-Verified Drafting -->
-      <div class="flow-stage square-corner-frame">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flow-stage-header">
-          <div class="flow-stage-title">3. Architecture &amp; Fact-Verified Drafting</div>
-          <div class="flow-stage-badge">AGENT 2 &amp; AGENT 3</div>
-        </div>
-        <div class="flow-cards-grid">
-          <div class="flow-node-card">
-            <div class="flow-node-title">Agent 2: SEO Architect</div>
-            <div class="flow-node-desc">TOC Headings, Read Time &amp; FAQ Schema</div>
-          </div>
-          <div class="flow-node-card">
-            <div class="flow-node-title">Agent 3: Master Writer v15</div>
-            <div class="flow-node-desc">1,400+ Words, 100% Reconciled Math (20+65+15=100)</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
-
-      <!-- Stage 4: Anti-AI Humanization & Quality Gate -->
-      <div class="flow-stage square-corner-frame">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flow-stage-header">
-          <div class="flow-stage-title">4. Anti-AI Humanization &amp; Adversarial Quality Gate</div>
-          <div class="flow-stage-badge">AGENT 4 &amp; AGENT 5</div>
-        </div>
-
-        <div class="decision-node-wrap">
-          <div class="decision-diamond">Agent 5: Adversarial Critic Gate</div>
-        </div>
-
-        <div class="decision-branch-row">
-          <div class="branch-retry">
-            <div style="font-weight: 700; color: var(--color-error); margin-bottom: 4px;">AI Score &gt; 15% OR Math Invalid</div>
-            <div>Triggers Agent 4 (Humanizer v12) to purge cliches, strip Unicode watermarks, and re-balance sentence burstiness.</div>
-          </div>
-          <div class="branch-pass">
-            <div style="font-weight: 700; color: var(--color-success); margin-bottom: 4px;">Approved: ZeroGPT &le; 15%</div>
-            <div>Verified mathematical consistency and factual accuracy passed directly to asset compiler.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
-
-      <!-- Stage 5: Asset Generation & Static Compilation -->
-      <div class="flow-stage square-corner-frame">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flow-stage-header">
-          <div class="flow-stage-title">5. Asset Generation &amp; Static Compilation</div>
-          <div class="flow-stage-badge">AGENT 6 &amp; AGENT 7</div>
-        </div>
-        <div class="flow-cards-grid">
-          <div class="flow-node-card">
-            <div class="flow-node-title">Agent 6: Studio Graphic</div>
-            <div class="flow-node-desc">Deterministic 16:9 Vector SVG Cover Artwork</div>
-          </div>
-          <div class="flow-node-card">
-            <div class="flow-node-title">Agent 7: Static Site Builder</div>
-            <div class="flow-node-desc">Schema.org JSON-LD, sitemap.xml, feed.xml</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
-
-      <!-- Stage 6: Live Production Deployment & Git Sync -->
-      <div class="flow-stage square-corner-frame">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flow-stage-header">
-          <div class="flow-stage-title">6. Live Production Deployment &amp; Git Attribution</div>
-          <div class="flow-stage-badge">AGENT 8 // ZERO-TOUCH</div>
-        </div>
-        <div class="flow-cards-grid">
-          <div class="flow-node-card">
-            <div class="flow-node-title">Agent 8: Hostinger SSH Deployer</div>
-            <div class="flow-node-desc">SCP Sync to 37.44.245.89 (755/644 Permissions)</div>
-          </div>
-          <div class="flow-node-card">
-            <div class="flow-node-title">GitHub Main Branch Push</div>
-            <div class="flow-node-desc">Authored by Huzaifa Malik (Green Dots Active)</div>
-          </div>
+        <div class="drawer-cards-grid" id="drawerGrid">
+          <!-- Dynamic Content Injected via JS -->
         </div>
       </div>
     </div>
@@ -1968,7 +1900,7 @@ function switchVideo(idx) {
   btns.forEach((b, i) => b.classList.toggle('active', i === idx));
 }
 
-// Isometric Stack Highlight Sync (Zero Collapse Bug)
+// Isometric Stack Highlight Sync
 function highlightStackLayer(layerNum) {
   for (let i = 1; i <= 4; i++) {
     const plane = document.getElementById('iso-layer-' + i);
@@ -1993,6 +1925,86 @@ function resetStackLayers() {
   }
 }
 
+// 6-Node Horizontal Stepper Drawer Data
+const STEPPER_PHASES = [
+  {
+    title: "Phase 1: Core Data Sources & Automated Triggers",
+    badge: "INGESTION ACTIVE",
+    cards: [
+      { title: "Search Catalysts", desc: "2026 market drivers, FBR tax circulars, and LDA municipal town planning rules." },
+      { title: "History Database", desc: "posts.json historical log enforcing 100% slug and keyword deduplication." },
+      { title: "Ground-Truth KB", desc: "Strictly constrained knowledgeBase.js rules for payment schedules and yields." },
+      { title: "Actions Scheduler", desc: "3x daily autonomous execution with 3–25 minute randomized anti-bot jitter." }
+    ]
+  },
+  {
+    title: "Phase 2: Trend & Keyword Discovery",
+    badge: "AGENT 1 // DISCOVERY",
+    cards: [
+      { title: "Agent 1: Trend Researcher", desc: "Synthesizes high-intent search queries via Groq Llama 3.3 70B & Gemini 2.5." },
+      { title: "Unique Long-Tail SEO", desc: "Generates click-worthy, non-generic title and canonical URL slug." },
+      { title: "Commercial Keywords", desc: "Maps high-intent commercial terms with buyer investment intent." },
+      { title: "Archetype Assignment", desc: "Selects 1 of 4 formats (Deep-Dive, Comparison Matrix, Legal, Commentary)." }
+    ]
+  },
+  {
+    title: "Phase 3: Architecture & Fact-Verified Drafting",
+    badge: "AGENTS 2 & 3 // DRAFTING",
+    cards: [
+      { title: "Agent 2: SEO Architect", desc: "Constructs semantic H2/H3 outline, read-time estimator, and FAQ Schema." },
+      { title: "Agent 3: Master Writer v15", desc: "Writes 1,400+ words strictly anchored to Ground Truth KB (20%+65%+15%=100%)." },
+      { title: "Banned AI Formulations", desc: "Strict ban on cliché openings, hollow transition phrases, and fluff." }
+    ]
+  },
+  {
+    title: "Phase 4: Anti-AI Humanization & Quality Gate",
+    badge: "AGENTS 4 & 5 // AUDIT",
+    cards: [
+      { title: "Agent 5: Critic Quality Gate", desc: "Adversarial audit model. Passes only if predicted ZeroGPT score <= 15%." },
+      { title: "Agent 4: Neural Humanizer v12", desc: "Rewrites failures with bursty sentence rhythms and strips Unicode watermarks." },
+      { title: "Legal Audit Hedging", desc: "Enforces accurate legal tax hedging on RDA foreign currency remittances." }
+    ]
+  },
+  {
+    title: "Phase 5: Asset Generation & Static Compilation",
+    badge: "AGENTS 6 & 7 // COMPILER",
+    cards: [
+      { title: "Agent 6: Studio Graphic", desc: "Deterministic 16:9 responsive vector SVG cover artwork (< 6 KB payload)." },
+      { title: "Agent 7: Static Compiler", desc: "Assembles lightweight HTML5 (< 35 KB), Schema.org JSON-LD, sitemap, and RSS." },
+      { title: "Index & Hub Sync", desc: "Updates blog.html archive with author verification and category metadata." }
+    ]
+  },
+  {
+    title: "Phase 6: Live Production Deployment & Git Sync",
+    badge: "AGENT 8 // LIVE SYNC",
+    cards: [
+      { title: "Agent 8: SSH/SCP Deployer", desc: "Direct encrypted transfer to LiteSpeed server (port 65002) with 755/644 perms." },
+      { title: "GitHub Main Push", desc: "Authored by Huzaifa Malik <exhuzaifa@gmail.com> for live green activity squares." },
+      { title: "Cache Flush & Verification", desc: "Automated HTTP 200 validation and instant global CDN propagation." }
+    ]
+  }
+];
+
+function selectStep(idx) {
+  const phase = STEPPER_PHASES[idx];
+  const nodes = document.querySelectorAll('.stepper-node');
+  nodes.forEach((n, i) => n.classList.toggle('active', i === idx));
+
+  document.getElementById('drawerPhaseTitle').textContent = phase.title;
+  document.getElementById('drawerPhaseBadge').textContent = phase.badge;
+
+  const grid = document.getElementById('drawerGrid');
+  grid.innerHTML = phase.cards.map(c => `
+    <div class="drawer-subcard">
+      <div class="drawer-subcard-title">${c.title}</div>
+      <div class="drawer-subcard-desc">${c.desc}</div>
+    </div>
+  `).join('');
+}
+
+// Initialize Phase 1 Drawer on load
+selectStep(0);
+
 // 8-Agent Architecture Matrix
 const AGENTS = [
   {
@@ -2009,6 +2021,7 @@ const AGENTS = [
 <span class="ck-kw">async function</span> <span class="ck-fn">getNextTopic</span>(existingPosts) {
   <span class="ck-kw">const</span> publishedSlugs = <span class="ck-kw">new</span> <span class="ck-fn">Set</span>(existingPosts.<span class="ck-fn">map</span>(p =&gt; p.slug));
   <span class="ck-kw">const</span> prompt = <span class="ck-str">\`Synthesize high-intent real estate search topic for 2026...\`</span>;
+  
   <span class="ck-kw">const</span> topic = <span class="ck-kw">await</span> <span class="ck-fn">callLLM</span>(prompt, groundTruthContext);
   <span class="ck-kw">return</span> <span class="ck-fn">extractJsonObject</span>(topic);
 }`
