@@ -1,0 +1,23 @@
+/* shadcn theme generated from AI transformation for mission-critical industries | Arrakis */
+:root {
+    --background: #ffffff;
+    --foreground: #080706;
+    --card: #ffffff;
+    --card-foreground: #080706;
+    --popover: #ffffff;
+    --popover-foreground: #080706;
+    --primary: #d46500;
+    --primary-foreground: #080706;
+    --ring: #d46500;
+    --secondary: #eeeae9;
+    --secondary-foreground: #110e0c;
+    --muted: #eeeae9;
+    --muted-foreground: #8c8886;
+    --accent: #eeeae9;
+    --accent-foreground: #110e0c;
+    --destructive: #ef4444;
+    --destructive-foreground: #f7f4f3;
+    --border: #dfd8d3;
+    --input: #dfd8d3;
+    --radius: 0.25rem;
+}
