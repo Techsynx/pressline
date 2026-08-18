@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pressline — Autonomous Content That Publishes Itself</title>
+<meta name="description" content="An 8-agent AI pipeline that researches trending topics, writes fact-verified articles, humanizes text below 15% AI detection, and deploys to your live server. Three times a day. Hands-free.">
+<meta name="keywords" content="autonomous content engine, AI publishing pipeline, automated blog, SEO content automation, fact-verified AI writing, anti-AI detection, content deployment">
+<meta name="author" content="Huzaifa Malik">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://pressline.dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pressline — Content That Publishes Itself">
+<meta property="og:description" content="8 autonomous agents. Fact-verified. Humanized below 15% AI detection. Deployed to your live server, three times a day.">
+<meta property="og:url" content="https://pressline.dev">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pressline — Content That Publishes Itself">
+<meta name="twitter:description" content="8 autonomous agents. Fact-verified. Humanized below 15% AI detection. Deployed to your live server.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236255fa'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-size='18' font-weight='800' fill='white'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Pressline","url":"https://pressline.dev","description":"Autonomous 8-agent AI content publishing pipeline with ground-truth verification, mathematical reconciliation, and anti-AI humanization.","applicationCategory":"BusinessApplication","operatingSystem":"Cloud","offers":[{"@type":"Offer","name":"Starter","price":"99","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","billingDuration":"P1M"}},{"@type":"Offer","name":"Growth","price":"249","priceCurrency":"USD"},{"@type":"Offer","name":"Agency","price":"499","priceCurrency":"USD"}],"creator":{"@type":"Person","name":"Huzaifa Malik","url":"https://exhuzaifa.vercel.app","sameAs":["https://contra.com/huzaifa_malik","https://github.com/exhuzaifa","https://www.linkedin.com/in/huzaifa-malikk/"]}}
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#06060b;--surface:#0d0d14;--raised:#14141e;--border:#1c1c2a;
+--text:#e4e4ea;--muted:#71718a;--accent:#6255fa;--accent-light:#8078ff;
+--accent-soft:rgba(98,85,250,.1);--success:#22c55e;--success-soft:rgba(34,197,94,.1);
+--radius:12px;--radius-sm:8px;--radius-pill:100px;
+--font:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,border-color .3s,backdrop-filter .3s}
+nav.scrolled{background:rgba(6,6,11,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:16px 24px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.3px}
+.logo svg{color:var(--accent)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{font-size:14px;font-weight:600;padding:8px 20px;border-radius:var(--radius-sm);background:var(--accent);color:#fff;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;border-radius:2px;transition:transform .3s,opacity .3s}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:rgba(6,6,11,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:20px;font-weight:600;color:var(--text)}
+.mobile-close{position:absolute;top:20px;right:24px;background:none;border:none;font-size:28px;color:var(--muted);cursor:pointer}
+
+/* HERO */
+.hero{padding:160px 0 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;left:-10%;width:60%;height:120%;background:radial-gradient(ellipse,rgba(98,85,250,.12) 0%,transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;top:10%;right:-15%;width:50%;height:100%;background:radial-gradient(ellipse,rgba(98,85,250,.06) 0%,transparent 50%);pointer-events:none}
+.hero .container{position:relative;z-index:1}
+.hero-badge{display:inline-block;font-size:13px;font-weight:600;color:var(--accent-light);background:var(--accent-soft);padding:6px 16px;border-radius:var(--radius-pill);border:1px solid rgba(98,85,250,.2);margin-bottom:28px}
+.hero h1{font-size:clamp(38px,5.5vw,68px);font-weight:800;line-height:1.08;letter-spacing:-.03em;max-width:720px;margin-bottom:20px}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(16px,1.8vw,19px);line-height:1.65;color:var(--muted);max-width:560px;margin-bottom:36px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;padding:13px 28px;border-radius:var(--radius-sm);background:var(--accent);color:#fff;font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(98,85,250,.35)}
+.btn-ghost{display:inline-flex;align-items:center;padding:13px 28px;border-radius:var(--radius-sm);border:1px solid var(--border);color:var(--text);font-weight:600;font-size:15px;transition:border-color .2s}
+.btn-ghost:hover{border-color:var(--muted)}
+
+/* STATS */
+.stats{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-number{font-size:32px;font-weight:800;letter-spacing:-.02em;color:var(--text)}
+.stat-number em{font-style:normal;color:var(--accent-light)}
+.stat-label{font-size:13px;font-weight:500;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.05em}
+
+/* SECTION COMMON */
+section{padding:100px 0}
+.section-badge{display:inline-block;font-size:12px;font-weight:700;color:var(--accent-light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
+.section-title{font-size:clamp(28px,3.8vw,44px);font-weight:800;letter-spacing:-.025em;line-height:1.15;margin-bottom:16px}
+.section-sub{font-size:17px;color:var(--muted);line-height:1.65;max-width:540px;margin-bottom:56px}
+
+/* PROBLEM */
+.problem{background:var(--surface)}
+.problem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.problem-card{padding:32px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg);transition:border-color .3s}
+.problem-card:hover{border-color:rgba(98,85,250,.3)}
+.problem-card .icon{width:40px;height:40px;border-radius:10px;background:rgba(239,68,68,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.problem-card .icon svg{width:20px;height:20px;color:#ef4444}
+.problem-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.problem-card p{font-size:15px;color:var(--muted);line-height:1.6}
+
+/* PIPELINE */
+.pipeline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step{padding:28px 24px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);transition:border-color .3s,transform .3s}
+.step:hover{border-color:rgba(98,85,250,.3);transform:translateY(-2px)}
+.step-num{font-size:14px;font-weight:800;color:var(--accent-light);background:var(--accent-soft);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.step h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.step p{font-size:14px;color:var(--muted);line-height:1.55}
+.pipeline-connector{text-align:center;padding:24px 0;color:var(--muted);font-size:14px;font-weight:500}
+
+/* FEATURES */
+.features{background:var(--surface)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feature-card{padding:32px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg);transition:border-color .3s}
+.feature-card:hover{border-color:rgba(98,85,250,.3)}
+.feature-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.feature-icon.indigo{background:var(--accent-soft)}
+.feature-icon.indigo svg{color:var(--accent-light)}
+.feature-icon.green{background:var(--success-soft)}
+.feature-icon.green svg{color:var(--success)}
+.feature-card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.feature-card p{font-size:14.5px;color:var(--muted);line-height:1.6}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start}
+.price-card{padding:32px 28px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);position:relative}
+.price-card.featured{border-color:var(--accent);background:linear-gradient(180deg,rgba(98,85,250,.06),var(--surface))}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#fff;background:var(--accent);padding:4px 14px;border-radius:var(--radius-pill)}
+.price-tier{font-size:15px;font-weight:700;margin-bottom:4px}
+.price-amount{font-size:36px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.price-amount span{font-size:15px;font-weight:500;color:var(--muted)}
+.price-for{font-size:13px;color:var(--muted);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.price-features{list-style:none;margin-bottom:28px}
+.price-features li{font-size:14px;color:var(--muted);padding:6px 0;padding-left:22px;position:relative;line-height:1.5}
+.price-features li::before{content:'';position:absolute;left:0;top:12px;width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);opacity:.5}
+.price-card.featured .price-features li::before{background:var(--accent);opacity:.8}
+.price-cta{display:block;width:100%;padding:12px;text-align:center;border-radius:var(--radius-sm);font-size:14px;font-weight:600;border:1px solid var(--border);color:var(--text);transition:border-color .2s,background .2s}
+.price-cta:hover{border-color:var(--accent);background:var(--accent-soft)}
+.price-card.featured .price-cta{background:var(--accent);border-color:var(--accent);color:#fff}
+.price-card.featured .price-cta:hover{opacity:.9}
+
+/* CTA */
+.final-cta{text-align:center;padding:120px 0;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(98,85,250,.1) 0%,transparent 60%);pointer-events:none}
+.final-cta h2{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-.025em;margin-bottom:16px;position:relative}
+.final-cta p{font-size:17px;color:var(--muted);max-width:460px;margin:0 auto 32px;position:relative}
+.final-cta .btn-primary{position:relative}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:48px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-left{display:flex;align-items:center;gap:20px}
+.footer-left .logo{font-size:16px}
+.footer-credit{font-size:13px;color:var(--muted)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:80ms}
+.reveal-d2{transition-delay:160ms}
+.reveal-d3{transition-delay:240ms}
+.reveal-d4{transition-delay:320ms}
+.reveal-d5{transition-delay:400ms}
+.reveal-d6{transition-delay:480ms}
+.reveal-d7{transition-delay:560ms}
+.reveal-d8{transition-delay:640ms}
+
+/* HERO ENTRANCE */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero-badge{animation:fadeUp .6s ease both;animation-delay:.1s}
+.hero h1{animation:fadeUp .6s ease both;animation-delay:.25s}
+.hero-sub{animation:fadeUp .6s ease both;animation-delay:.4s}
+.hero-ctas{animation:fadeUp .6s ease both;animation-delay:.55s}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .pipeline-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .features-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  section{padding:72px 0}
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:block}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+  .problem-grid{grid-template-columns:1fr}
+  .pipeline-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px}
+  .price-card.featured{order:-1}
+  .hero{padding:120px 0 72px}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-links{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="Pressline Home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="11" y2="6"/><line x1="3" y1="14" x2="11" y2="14"/><line x1="3" y1="22" x2="11" y2="22"/>
+        <polyline points="11,6 19,14 11,22"/><line x1="19" y1="14" x2="25" y2="14"/>
+      </svg>
+      pressline
+    </a>
+    <div class="nav-links">
+      <a href="#pipeline">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <a href="#pricing" class="nav-cta">Get Access</a>
+    <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mob').classList.add('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div id="mob" class="mobile-menu">
+  <button class="mobile-close" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
+  <a href="#pipeline" onclick="this.parentElement.classList.remove('open')">How It Works</a>
+  <a href="#features" onclick="this.parentElement.classList.remove('open')">Features</a>
+  <a href="#pricing" onclick="this.parentElement.classList.remove('open')">Pricing</a>
+  <a href="mailto:exhuzaifa@gmail.com" class="btn-primary" onclick="this.parentElement.classList.remove('open')">Get Access</a>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-badge">Autonomous Content Engineering</span>
+    <h1>Content that <span>publishes itself.</span></h1>
+    <p class="hero-sub">An 8-agent AI pipeline that researches trending topics, writes fact-verified articles, humanizes text below 15% AI detection, and deploys to your live server. Three times a day. Hands-free.</p>
+    <div class="hero-ctas">
+      <a href="#pipeline" class="btn-primary">See How It Works</a>
+      <a href="mailto:exhuzaifa@gmail.com" class="btn-ghost">Get Early Access</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="reveal">
+        <div class="stat-number">10<em>-</em>15<em>%</em></div>
+        <div class="stat-label">AI Detection Score</div>
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="stat-number">3<em>x</em></div>
+        <div class="stat-label">Published Daily</div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="stat-number">100<em>%</em></div>
+        <div class="stat-label">Math Verified</div>
+      </div>
+      <div class="reveal reveal-d3">
+        <div class="stat-number"><em>&lt;</em> 90<em>s</em></div>
+        <div class="stat-label">Trend to Live</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <span class="section-badge reveal">The Problem</span>
+    <h2 class="section-title reveal">AI writers are fundamentally broken.</h2>
+    <p class="section-sub reveal">Every tool on the market has the same fatal flaws. Here is why none of them actually work at scale.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3>Hallucinated numbers</h3>
+        <p>Made-up tax rates. Payment tables that add up to 130%. Confident citations of data that does not exist. One fact-check and the whole article falls apart.</p>
+      </div>
+      <div class="problem-card reveal reveal-d1">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+        <h3>Robotic copy</h3>
+        <p>Every article opens with the same formula. Google and ZeroGPT flag it above 80%. Your readers can smell it before they finish the first paragraph.</p>
+      </div>
+      <div class="problem-card reveal reveal-d2">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4v5h5M20 20v-5h-5"/><path d="M20.49 9A9 9 0 005.64 5.64L4 4m16 16l-1.64-1.64A9 9 0 019 20.49"/></svg></div>
+        <h3>Manual labor</h3>
+        <p>Generate. Copy. Paste. Format. Find an image. Upload. Write meta tags. Publish. The AI part is 10% of the actual work.</p>
+      </div>
+      <div class="problem-card reveal reveal-d3">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3>No source of truth</h3>
+        <p>Ask it about current tax rates and it confidently cites 2022 data. There is no verified knowledge base anchoring the output to reality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section id="pipeline">
+  <div class="container">
+    <span class="section-badge reveal">Architecture</span>
+    <h2 class="section-title reveal">Eight agents. One pipeline.</h2>
+    <p class="section-sub reveal">From trending topic to live production server in under 90 seconds. No human in the loop.</p>
+    <div class="pipeline-grid">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Trend Researcher</h3>
+        <p>Scans real search demand, deduplicates against published history, and synthesizes a unique long-tail topic with verified keywords.</p>
+      </div>
+      <div class="step reveal reveal-d1">
+        <div class="step-num">02</div>
+        <h3>SEO Architect</h3>
+        <p>Selects the optimal content format and builds a structured blueprint with headings, TOC schema, and FAQ markup.</p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="step-num">03</div>
+        <h3>Master Writer</h3>
+        <p>Drafts 1,400+ words strictly constrained by your verified knowledge base. Every number traces to a real, documented source.</p>
+      </div>
+      <div class="step reveal reveal-d3">
+        <div class="step-num">04</div>
+        <h3>Neural Humanizer</h3>
+        <p>Injects sentence burstiness, strips Unicode watermarks, replaces cliches, and balances paragraph rhythm for natural reading.</p>
+      </div>
+      <div class="step reveal reveal-d4">
+        <div class="step-num">05</div>
+        <h3>Critic Gate</h3>
+        <p>Audits the draft against an adversarial quality model. If AI score exceeds 15% or math fails reconciliation, it triggers a rewrite.</p>
+      </div>
+      <div class="step reveal reveal-d5">
+        <div class="step-num">06</div>
+        <h3>Image Studio</h3>
+        <p>Generates a responsive, branded SVG cover graphic with your color palette and credentials. Zero external API costs.</p>
+      </div>
+      <div class="step reveal reveal-d6">
+        <div class="step-num">07</div>
+        <h3>Static Builder</h3>
+        <p>Compiles production HTML with Schema.org structured data, updates your sitemap, regenerates RSS, and wires internal links.</p>
+      </div>
+      <div class="step reveal reveal-d7">
+        <div class="step-num">08</div>
+        <h3>Live Deployer</h3>
+        <p>Pushes to your production server via SSH. Commits to GitHub under your name. Registers as verified contribution activity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="features">
+  <div class="container">
+    <span class="section-badge reveal">Why Pressline</span>
+    <h2 class="section-title reveal">Built different.</h2>
+    <p class="section-sub reveal">Not another prompt wrapper. An autonomous content engineering system with real verification layers.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon indigo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3>Ground-Truth Anchoring</h3>
+        <p>Every article pulls from a verified knowledge base you control. Real prices, real tax brackets, real legal references. Not training data.</p>
+      </div>
+      <div class="feature-card reveal reveal-d1">
+        <div class="feature-icon green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+        <h3>Mathematical Reconciliation</h3>
+        <p>Payment plans that add up to 100%. Yield calculations that compute. Tables that withstand scrutiny from a buyer or regulator.</p>
+      </div>
+      <div class="feature-card reveal reveal-d2">
+        <div class="feature-icon indigo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></div>
+        <h3>Anti-AI Humanization</h3>
+        <p>Multi-pass neural processing drops detection to 10-15%. High burstiness, natural contractions, zero formulaic openers.</p>
+      </div>
+      <div class="feature-card reveal reveal-d3">
+        <div class="feature-icon green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <h3>Zero-Touch Deployment</h3>
+        <p>From trend discovery to live production server in under 90 seconds. No copy-pasting. No CMS login. No manual intervention.</p>
+      </div>
+      <div class="feature-card reveal reveal-d4">
+        <div class="feature-icon indigo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm0 8a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zm10 0a1 1 0 011-1h4a1 1 0 011 1v6a1 1 0 01-1 1h-4a1 1 0 01-1-1v-6z"/></svg></div>
+        <h3>Dynamic Format Rotation</h3>
+        <p>Four distinct archetypes prevent content fatigue. Deep dives, comparison matrices, legal explainers, and market commentary.</p>
+      </div>
+      <div class="feature-card reveal reveal-d5">
+        <div class="feature-icon green"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3>GitHub Attribution</h3>
+        <p>Every publish registers as a verified contribution on your GitHub profile. Your name, your email, your commit history. Real green squares.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <span class="section-badge reveal">Pricing</span>
+    <h2 class="section-title reveal">Simple pricing. Serious output.</h2>
+    <p class="section-sub reveal">Every plan includes ground-truth verification, humanization, and live deployment. No hidden fees.</p>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-tier">Starter</div>
+        <div class="price-amount">$99 <span>/mo</span></div>
+        <div class="price-for">For niche bloggers, local realtors, and consultants.</div>
+        <ul class="price-features">
+          <li>1 verified post per day (30/mo)</li>
+          <li>1 Ground-Truth Knowledge Base</li>
+          <li>Auto Git and server sync</li>
+          <li>Sitemap and RSS updates</li>
+          <li>Email support</li>
+        </ul>
+        <a href="mailto:exhuzaifa@gmail.com?subject=Pressline Starter" class="price-cta">Get Started</a>
+      </div>
+      <div class="price-card featured reveal reveal-d1">
+        <span class="price-badge">Most Popular</span>
+        <div class="price-tier">Growth</div>
+        <div class="price-amount">$249 <span>/mo</span></div>
+        <div class="price-for">For growing agencies, e-commerce, and B2B SaaS.</div>
+        <ul class="price-features">
+          <li>3 verified posts per day (90/mo)</li>
+          <li>4 dynamic format archetypes</li>
+          <li>15% ZeroGPT score guarantee</li>
+          <li>Studio SVG cover generator</li>
+          <li>Schema.org structured data</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="mailto:exhuzaifa@gmail.com?subject=Pressline Growth" class="price-cta">Get Started</a>
+      </div>
+      <div class="price-card reveal reveal-d2">
+        <div class="price-tier">Agency</div>
+        <div class="price-amount">$499 <span>/mo</span></div>
+        <div class="price-for">For SEO and digital marketing agencies.</div>
+        <ul class="price-features">
+          <li>Manage up to 5 client brands</li>
+          <li>Custom knowledge base per client</li>
+          <li>White-label output</li>
+          <li>RSS and webhook integrations</li>
+          <li>Dedicated Slack channel</li>
+        </ul>
+        <a href="mailto:exhuzaifa@gmail.com?subject=Pressline Agency" class="price-cta">Contact Sales</a>
+      </div>
+      <div class="price-card reveal reveal-d3">
+        <div class="price-tier">Done-For-You</div>
+        <div class="price-amount">$1,500 <span>/mo</span></div>
+        <div class="price-for">For real estate firms, law firms, and clinics.</div>
+        <ul class="price-features">
+          <li>We build your knowledge base</li>
+          <li>Full domain configuration</li>
+          <li>90 rankable articles per month</li>
+          <li>Hands-free onboarding</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <a href="mailto:exhuzaifa@gmail.com?subject=Pressline DFY" class="price-cta">Book a Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="reveal">Stop publishing robot content.</h2>
+    <p class="reveal reveal-d1">Get hands-free, fact-verified articles deployed to your live server every single day.</p>
+    <a href="mailto:exhuzaifa@gmail.com?subject=Pressline Early Access" class="btn-primary reveal reveal-d2">Get Early Access</a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <a href="/" class="logo" aria-label="Pressline">
+          <svg width="22" height="22" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="11" y2="6"/><line x1="3" y1="14" x2="11" y2="14"/><line x1="3" y1="22" x2="11" y2="22"/>
+            <polyline points="11,6 19,14 11,22"/><line x1="19" y1="14" x2="25" y2="14"/>
+          </svg>
+          pressline
+        </a>
+        <span class="footer-credit">Built by Huzaifa Malik</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://exhuzaifa.vercel.app" target="_blank" rel="noopener">Portfolio</a>
+        <a href="https://contra.com/huzaifa_malik" target="_blank" rel="noopener">Contra</a>
+        <a href="https://github.com/exhuzaifa" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/huzaifa-malikk/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/923268282409" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:exhuzaifa@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Nav scroll
+let ticking=false;
+window.addEventListener('scroll',()=>{if(!ticking){window.requestAnimationFrame(()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);ticking=false});ticking=true}});
+</script>
+</body>
+</html>
