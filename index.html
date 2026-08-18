@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pressline — Autonomous Content Engineering for Mission-Critical Publishing</title>
-<meta name="description" content="Pressline partners with ambitious digital enterprises to deploy autonomous AI publishing pipelines in production. Ground-truth verified facts, mathematical reconciliation, anti-AI humanization below 15% ZeroGPT, and zero-touch deployment 3x daily.">
+<title>Pressline — Autonomous Content Engineering Pipeline</title>
+<meta name="description" content="An 8-agent autonomous AI publishing engine. Fact-verified ground truth, reconciled math, and sub-15% ZeroGPT humanization deployed 3x daily.">
 <meta name="keywords" content="autonomous content engine, AI publishing pipeline, automated SEO, agentic content workflow, zero-touch deployment, anti-AI detection, ground-truth AI">
-<meta name="author" content="Huzaifa Malik (Techsynx)">
+<meta name="author" content="Huzaifa Malik">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://pressline.dev">
 
 <!-- Open Graph / Meta -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Pressline — Autonomous Content Engineering for Mission-Critical Publishing">
-<meta property="og:description" content="8 autonomous neural agents. Fact-verified ground truth. Humanized below 15% AI detection. Deployed straight to production servers 3 times daily.">
+<meta property="og:title" content="Pressline — Autonomous Content Engineering Pipeline">
+<meta property="og:description" content="8 autonomous agents. Fact-verified ground truth. Humanized below 15% AI detection. Deployed straight to production 3x daily.">
 <meta property="og:url" content="https://pressline.dev">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Pressline — Autonomous Content Engineering for Mission-Critical Publishing">
-<meta name="twitter:description" content="8 autonomous neural agents. Fact-verified ground truth. Humanized below 15% AI detection. Deployed straight to production servers.">
+<meta name="twitter:title" content="Pressline — Autonomous Content Engineering Pipeline">
+<meta name="twitter:description" content="8 autonomous agents. Fact-verified ground truth. Humanized below 15% AI detection. Deployed straight to production.">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230B0907' stroke='%23ff6600' stroke-width='2'/%3E%3Cpath d='M8 10h16M8 16h10M8 22h14' stroke='%23fbf6ec' stroke-width='2.5' stroke-linecap='square'/%3E%3Ccircle cx='24' cy='16' r='2.5' fill='%23ff6600'/%3E%3C/svg%3E">
@@ -44,7 +44,7 @@
     "@type": "Person",
     "name": "Huzaifa Malik",
     "url": "https://exhuzaifa.vercel.app",
-    "email": "techsynxx@gmail.com",
+    "email": "exhuzaifa@gmail.com",
     "sameAs": [
       "https://contra.com/huzaifa_malik",
       "https://github.com/exhuzaifa",
@@ -91,26 +91,37 @@
   --font-sans: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "Segoe UI", Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  --border-hairline: 1px solid var(--color-stroke-3);
-  --border-subtle: 1px solid rgba(223, 216, 211, 0.2);
-  --border-active: 1px solid var(--color-sun);
 }
 
-html {
+/* Custom Sleek Dark Scrollbar (Zero White Bars) */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-stroke-3);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-sun);
+}
+
+html, body {
   scroll-behavior: smooth;
   background-color: var(--color-black);
   color: var(--color-dust);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
-  background-color: var(--color-black);
-  color: var(--color-dust);
-  overflow-x: hidden;
 }
 
 a {
@@ -119,13 +130,13 @@ a {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 
 /* ==========================================================================
-   ARRAKIS TECHNICAL SQUARE BRACKETS & CORNER FRAMES
+   ARRAKIS TECHNICAL CORNER FRAMES & LABELS
    ========================================================================== */
 .square-corner-frame {
   position: relative;
@@ -193,23 +204,23 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  height: 64px;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 20px;
+  font-size: 19px;
   letter-spacing: -0.02em;
   color: var(--color-dust);
 }
 
 .nav-brand svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
 }
 
 .nav-brand span.tag {
@@ -225,12 +236,12 @@ nav {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-menu a {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--color-stroke-2);
   letter-spacing: 0.04em;
   transition: color 0.2s ease;
@@ -279,34 +290,33 @@ nav {
 }
 
 /* ==========================================================================
-   HERO SECTION (FIXED TIGHT FIT - NO EMPTY SPACE ON MOBILE)
+   HERO SECTION (PUNCHY COPY & TIGHT HUD)
    ========================================================================== */
 .hero-wrapper {
-  padding: 48px 0 64px;
+  padding: 40px 0 54px;
   position: relative;
   background: var(--color-black);
 }
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 36px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
   align-items: start;
 }
 
 .hero-left {
   display: flex;
   flex-direction: column;
-  padding-top: 12px;
 }
 
 .hero-left h1 {
   font-family: var(--font-heading);
-  font-size: clamp(36px, 4.5vw, 60px);
+  font-size: clamp(34px, 4.2vw, 56px);
   font-weight: 800;
   line-height: 1.06;
   letter-spacing: -0.03em;
-  margin: 18px 0;
+  margin: 16px 0 14px;
   color: var(--color-dust);
 }
 
@@ -315,22 +325,22 @@ nav {
 }
 
 .hero-left p.desc {
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--color-stroke-2);
-  max-width: 520px;
-  margin-bottom: 32px;
+  max-width: 480px;
+  margin-bottom: 28px;
 }
 
 .hero-ctas {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .hero-stats-ticker {
-  margin-top: 36px;
-  padding-top: 20px;
+  margin-top: 32px;
+  padding-top: 18px;
   border-top: 1px solid var(--color-stroke-3);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -347,12 +357,12 @@ nav {
 
 .ticker-item span.num {
   font-family: var(--font-mono);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--color-dust);
 }
 
-/* Video Showcase HUD (Tightly Scaled) */
+/* Video Showcase HUD */
 .hero-hud-card {
   display: flex;
   flex-direction: column;
@@ -383,7 +393,7 @@ nav {
   padding: 8px 4px;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--color-stroke-2);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -404,7 +414,6 @@ nav {
   aspect-ratio: 16/9;
   background: #000000;
   overflow: hidden;
-  height: auto;
 }
 
 .video-viewport video {
@@ -430,7 +439,7 @@ nav {
 }
 
 .hud-bottom-telemetry {
-  padding: 14px 16px;
+  padding: 12px 14px;
   background: var(--color-night);
   border-top: 1px solid var(--color-stroke-3);
 }
@@ -443,14 +452,13 @@ nav {
 
 .telemetry-live-val {
   font-family: var(--font-heading);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--color-dust);
-  letter-spacing: -0.02em;
 }
 
 .telemetry-live-val span.sub {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-sun);
   font-family: var(--font-mono);
 }
@@ -460,7 +468,7 @@ nav {
    ========================================================================== */
 .problem-orbit-section {
   position: relative;
-  padding: 100px 0 120px;
+  padding: 80px 0 100px;
   background: radial-gradient(circle at 50% 10%, rgba(255, 139, 62, 0.05) 0%, var(--color-black) 70%);
   border-top: 1px solid var(--color-stroke-3);
   border-bottom: 1px solid var(--color-stroke-3);
@@ -468,7 +476,7 @@ nav {
 }
 
 .problem-orbit-container {
-  max-width: 920px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
   position: relative;
@@ -477,8 +485,8 @@ nav {
 .orbit-arc-wrap {
   position: relative;
   width: 100%;
-  max-width: 760px;
-  margin: 0 auto 30px;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .orbit-arc-svg {
@@ -505,7 +513,7 @@ nav {
 }
 
 .card-top-stack {
-  top: 18%;
+  top: 16%;
   animation: floatDoc 6s ease-in-out infinite;
 }
 
@@ -555,142 +563,188 @@ nav {
 }
 
 .problem-big-statement {
-  margin: 60px 0;
+  margin: 50px 0;
   position: relative;
   z-index: 5;
 }
 
 .problem-big-statement h2 {
   font-family: var(--font-heading);
-  font-size: clamp(28px, 3.6vw, 46px);
+  font-size: clamp(26px, 3.4vw, 42px);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--color-dust);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .problem-big-statement p.sub-bottleneck {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.6;
   color: var(--color-stroke-2);
-  max-width: 680px;
+  max-width: 620px;
   margin: 0 auto;
 }
 
 /* ==========================================================================
-   3D ISOMETRIC ARCHITECTURE STACK SECTION
+   3D ISOMETRIC ARCHITECTURE STACK SECTION (ANIMATED HOVER & ELEVATION)
    ========================================================================== */
 .isometric-stack-section {
-  padding: 120px 0;
+  padding: 90px 0;
   position: relative;
   background: var(--color-night);
   border-bottom: 1px solid var(--color-stroke-3);
 }
 
+.section-title-wrap {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 50px;
+}
+
+.section-title-wrap h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 12px 0;
+  color: var(--color-dust);
+}
+
+.section-title-wrap p {
+  font-size: 15px;
+  color: var(--color-stroke-2);
+  line-height: 1.5;
+}
+
 .isometric-layout-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 28px;
   align-items: center;
 }
 
 .stack-card-col {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 36px;
 }
 
 .stack-feature-card {
-  padding: 24px;
+  padding: 20px;
   border-bottom: 1px solid var(--color-stroke-3);
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.stack-feature-card:hover {
+.stack-feature-card:hover, .stack-feature-card.highlighted {
   border-bottom-color: var(--color-sun);
   transform: translateY(-2px);
 }
 
 .stack-feature-card h3 {
   font-family: var(--font-heading);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--color-dust);
 }
 
 .stack-feature-card p {
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--color-stroke-2);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 /* Central Isometric Wireframe Canvas */
 .isometric-canvas-frame {
   text-align: center;
   position: relative;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .iso-layer-svg {
   width: 100%;
-  max-width: 380px;
+  max-width: 360px;
   height: auto;
   margin: 0 auto;
   filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
-  transition: transform 0.5s ease;
 }
 
-.isometric-canvas-frame:hover .iso-layer-svg {
-  transform: translateY(-8px) scale(1.02);
+.iso-plane {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.iso-plane:hover {
+  transform: translateY(-10px);
+}
+
+/* Floating animation on planes */
+@keyframes floatLayer04 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes floatLayer03 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes floatLayer02 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+
+.plane-04 { animation: floatLayer04 4s ease-in-out infinite; }
+.plane-03 { animation: floatLayer03 4s ease-in-out infinite 0.5s; }
+.plane-02 { animation: floatLayer02 4s ease-in-out infinite 1s; }
+
+/* ==========================================================================
+   MASTER PIPELINE FLOWCHART ARCHITECTURE SECTION (USER IMAGE 5)
+   ========================================================================== */
+.master-flowchart-section {
+  padding: 90px 0;
+  position: relative;
+  background: var(--color-black);
+  border-bottom: 1px solid var(--color-stroke-3);
+}
+
+.flowchart-display-frame {
+  padding: 24px;
+  text-align: center;
+  background: #060504;
+  overflow: hidden;
+}
+
+.flowchart-img {
+  width: 100%;
+  max-width: 820px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 4px;
+  border: 1px solid var(--color-stroke-3);
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.flowchart-img:hover {
+  transform: scale(1.01);
 }
 
 /* ==========================================================================
-   INTERACTIVE 8-AGENT NEURAL PIPELINE
+   INTERACTIVE 8-AGENT NEURAL PIPELINE (FIXED NO HORIZONTAL OVERFLOW)
    ========================================================================== */
 .section-wrapper {
-  padding: 100px 0;
+  padding: 90px 0;
   position: relative;
 }
 
-.section-title-wrap {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 60px;
-}
-
-.section-title-wrap h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(32px, 3.8vw, 48px);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 16px 0;
-  color: var(--color-dust);
-}
-
-.section-title-wrap p {
-  font-size: 16px;
-  color: var(--color-stroke-2);
-  line-height: 1.6;
-}
-
 .architecture-box {
-  padding: 36px;
+  padding: 32px;
 }
 
 .agent-nav-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .agent-btn {
   background: var(--color-night);
   border: 1px solid var(--color-stroke-3);
-  padding: 14px 12px;
+  padding: 12px 10px;
   text-align: left;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -703,15 +757,15 @@ nav {
 
 .agent-btn span.tag {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--color-sun);
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 .agent-btn span.name {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--color-dust);
 }
@@ -719,25 +773,25 @@ nav {
 .agent-body-pane {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
-  gap: 32px;
+  gap: 28px;
   background: var(--color-black);
   border: 1px solid var(--color-stroke-3);
-  padding: 28px;
+  padding: 24px;
 }
 
 .agent-pane-left h3 {
   font-family: var(--font-heading);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--color-dust);
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
 .agent-pane-left p {
-  font-size: 14.5px;
+  font-size: 14px;
   color: var(--color-stroke-2);
-  line-height: 1.65;
-  margin-bottom: 20px;
+  line-height: 1.55;
+  margin-bottom: 18px;
 }
 
 .agent-specs-list {
@@ -747,7 +801,7 @@ nav {
 }
 
 .agent-specs-list li {
-  padding: 8px 0;
+  padding: 6px 0;
   border-bottom: 1px solid rgba(223, 216, 211, 0.08);
   color: var(--color-stroke-2);
   display: flex;
@@ -759,22 +813,24 @@ nav {
   font-weight: 600;
 }
 
+/* Code box wrapping (zero ugly white scrollbar) */
 .agent-code-box {
   background: #020202;
   border: 1px solid var(--color-stroke-3);
-  padding: 18px;
+  padding: 16px;
   font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1.7;
+  font-size: 11.5px;
+  line-height: 1.65;
   color: var(--color-stroke-2);
-  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow: hidden;
 }
 
 .ck-kw { color: #ff8b3e; }
 .ck-str { color: #fbefd6; }
 .ck-fn { color: #dfd8d3; }
 .ck-cm { color: #6b6b6b; }
-.ck-num { color: #ffd166; }
 
 /* ==========================================================================
    SIDE-BY-SIDE VERIFICATION PROOF (AUDIT)
@@ -782,11 +838,11 @@ nav {
 .audit-split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 20px;
 }
 
 .audit-card {
-  padding: 32px;
+  padding: 28px;
 }
 
 .audit-card.flawed {
@@ -802,21 +858,21 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
-  padding-bottom: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--color-stroke-3);
 }
 
 .audit-card-head h3 {
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 700;
 }
 
 .audit-pill {
   font-family: var(--font-mono);
   font-size: 11px;
-  padding: 3px 8px;
+  padding: 2px 8px;
   border-radius: 2px;
 }
 
@@ -834,12 +890,12 @@ nav {
 
 .audit-text {
   font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 12.5px;
+  line-height: 1.65;
 }
 
 .audit-text p {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .bad-strike {
@@ -855,16 +911,16 @@ nav {
 }
 
 /* ==========================================================================
-   PRICING TIERS (ARRAKIS BRACKET MATRIX)
+   PRICING TIERS
    ========================================================================== */
 .pricing-matrix-arrakis {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 
 .price-tier-card {
-  padding: 32px 24px;
+  padding: 28px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -877,27 +933,27 @@ nav {
 
 .tier-code-tag {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--color-sun);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .price-tier-card h3 {
   font-family: var(--font-heading);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--color-dust);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .price-val-block {
-  margin: 16px 0 20px;
+  margin: 12px 0 16px;
 }
 
 .price-val-block .num {
   font-family: var(--font-heading);
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 800;
   line-height: 1;
   color: var(--color-dust);
@@ -905,25 +961,25 @@ nav {
 
 .price-val-block .per {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-stroke-2);
 }
 
 .features-list {
   list-style: none;
   font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1.6;
-  margin-bottom: 28px;
+  font-size: 11.5px;
+  line-height: 1.55;
+  margin-bottom: 24px;
   border-top: 1px solid var(--color-stroke-3);
-  padding-top: 18px;
+  padding-top: 14px;
 }
 
 .features-list li {
-  padding: 6px 0;
+  padding: 5px 0;
   color: var(--color-stroke-2);
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
 .features-list li::before {
@@ -936,25 +992,25 @@ nav {
    DEPLOY CTA SECTION
    ========================================================================== */
 .cta-deploy-block {
-  max-width: 840px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 56px 40px;
+  padding: 48px 32px;
   text-align: center;
 }
 
 .cta-deploy-block h2 {
   font-family: var(--font-heading);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(28px, 3.6vw, 42px);
   font-weight: 800;
-  margin: 16px 0 18px;
+  margin: 14px 0 16px;
   color: var(--color-dust);
 }
 
 .cta-deploy-block p {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--color-stroke-2);
-  max-width: 500px;
-  margin: 0 auto 32px;
+  max-width: 480px;
+  margin: 0 auto 28px;
 }
 
 /* ==========================================================================
@@ -962,7 +1018,7 @@ nav {
    ========================================================================== */
 footer {
   border-top: 1px solid var(--color-stroke-3);
-  padding: 60px 0 40px;
+  padding: 48px 0 32px;
   background: var(--color-black);
 }
 
@@ -970,27 +1026,27 @@ footer {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 32px;
-  padding-bottom: 40px;
+  gap: 28px;
+  padding-bottom: 32px;
   border-bottom: 1px solid var(--color-stroke-3);
 }
 
 .footer-col h4 {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11.5px;
   text-transform: uppercase;
   color: var(--color-dust);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .footer-col ul {
   list-style: none;
   font-family: var(--font-mono);
-  font-size: 12.5px;
+  font-size: 12px;
 }
 
 .footer-col li {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .footer-col a {
@@ -1007,10 +1063,10 @@ footer {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 14px;
-  padding-top: 28px;
+  gap: 12px;
+  padding-top: 24px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--color-stroke-3);
 }
 
@@ -1019,8 +1075,8 @@ footer {
    ========================================================================== */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal.revealed {
@@ -1031,7 +1087,7 @@ footer {
 /* Responsive Fixes */
 @media (max-width: 1024px) {
   .hero-layout { grid-template-columns: 1fr; }
-  .isometric-layout-grid { grid-template-columns: 1fr; gap: 40px; }
+  .isometric-layout-grid { grid-template-columns: 1fr; gap: 32px; }
   .pricing-matrix-arrakis { grid-template-columns: repeat(2, 1fr); }
   .agent-nav-grid { grid-template-columns: repeat(2, 1fr); }
   .agent-body-pane { grid-template-columns: 1fr; }
@@ -1039,14 +1095,13 @@ footer {
 
 @media (max-width: 768px) {
   .nav-menu { display: none; }
-  .hero-wrapper { padding: 32px 0 48px; }
+  .hero-wrapper { padding: 24px 0 40px; }
   .hero-left { padding-top: 0; }
-  .hero-hud-card { margin-top: 24px; }
+  .hero-hud-card { margin-top: 20px; }
   .video-viewport { aspect-ratio: 16/9; }
-  .orbit-metrics-grid { grid-template-columns: repeat(2, 1fr); }
   .audit-split-grid { grid-template-columns: 1fr; }
   .pricing-matrix-arrakis { grid-template-columns: 1fr; }
-  .cta-deploy-block { padding: 36px 20px; }
+  .cta-deploy-block { padding: 32px 16px; }
 }
 </style>
 </head>
@@ -1068,13 +1123,13 @@ footer {
     <div class="nav-menu">
       <a href="#pipeline">ARCHITECTURE</a>
       <a href="#stack">STACK</a>
-      <a href="#verification">VERIFICATION</a>
+      <a href="#flowchart">FLOWCHART</a>
       <a href="#pricing">PRICING</a>
       <a href="https://github.com/Techsynx/pressline" target="_blank" rel="noopener">GITHUB</a>
     </div>
 
     <div>
-      <a href="mailto:techsynxx@gmail.com?subject=Pressline%20Cluster%20Access" class="btn-arrakis">
+      <a href="mailto:exhuzaifa@gmail.com?subject=Pressline%20Cluster%20Access" class="btn-arrakis">
         REQUEST ACCESS
       </a>
     </div>
@@ -1091,11 +1146,11 @@ footer {
           <div class="mono-label pulse-green">SYSTEM ARCHITECTURE // V3.2 PROD</div>
           <h1>Autonomous Content Engineering for <span class="highlight">Mission-Critical Publishing</span></h1>
           <p class="desc">
-            Pressline coordinates an 8-agent neural cluster to research, write, fact-verify, and deploy rankable organic content directly to production servers 3 times daily with mathematical reconciliation and sub-15% ZeroGPT detection.
+            8 neural agents research, write, fact-verify, and deploy rankable content to production servers 3x daily.
           </p>
 
           <div class="hero-ctas">
-            <a href="mailto:techsynxx@gmail.com?subject=Launch%20Pressline%20Engine" class="btn-arrakis">
+            <a href="mailto:exhuzaifa@gmail.com?subject=Launch%20Pressline%20Engine" class="btn-arrakis">
               LAUNCH ENGINE NODE
             </a>
             <a href="#pipeline" class="btn-arrakis btn-arrakis-outline">
@@ -1147,12 +1202,12 @@ footer {
         <div class="hud-bottom-telemetry">
           <div class="telemetry-row">
             <div>
-              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-stroke-3); text-transform: uppercase;">GROUND TRUTH VERIFICATION</div>
+              <div style="font-family: var(--font-mono); font-size: 10px; color: var(--color-stroke-3); text-transform: uppercase;">GROUND TRUTH VERIFICATION</div>
               <div class="telemetry-live-val" id="telemetryValue">100.0% <span class="sub">MATH RECONCILED</span></div>
             </div>
             <div style="text-align: right;">
-              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-stroke-3); text-transform: uppercase;">ACTIVE FAILOVER</div>
-              <div style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--color-sun);">Groq + Gemini</div>
+              <div style="font-family: var(--font-mono); font-size: 10px; color: var(--color-stroke-3); text-transform: uppercase;">ACTIVE FAILOVER</div>
+              <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--color-sun);">Groq + Gemini</div>
             </div>
           </div>
         </div>
@@ -1165,7 +1220,7 @@ footer {
 <section class="problem-orbit-section">
   <div class="container">
     <div class="problem-orbit-container">
-      <div class="mono-label" style="margin-bottom: 20px;">THE BOTTLENECK</div>
+      <div class="mono-label" style="margin-bottom: 16px;">THE BOTTLENECK</div>
 
       <div class="orbit-arc-wrap">
         <!-- Top Arc SVG -->
@@ -1187,17 +1242,17 @@ footer {
       <div class="problem-big-statement scroll-reveal">
         <h2>84% of digital brands publish with AI, but &lt;5% achieve sustained Google rankings without detection penalties.</h2>
         <p class="sub-bottleneck">
-          The bottleneck isn't AI generation, it's the verification gap — factual grounding, mathematical reconciliation, watermark purging, and autonomous execution.
+          The bottleneck isn't AI generation. It's factual grounding, math reconciliation, and zero-touch deployment.
         </p>
       </div>
 
       <!-- Bottom Trajectory Arc & Floating Email Card -->
-      <div class="orbit-arc-wrap" style="margin-top: 30px;">
+      <div class="orbit-arc-wrap">
         <svg class="orbit-arc-svg" viewBox="0 0 740 215" fill="none" style="transform: scaleY(-1);">
           <path d="M2.66 212.25C39.83 147.87 93.3 94.4 157.68 57.24C222.06 20.07 295.09 0.5 369.43 0.5C443.77 0.5 516.8 20.07 581.18 57.24C645.56 94.4 699.02 147.87 736.19 212.25" stroke="#ff8b3e" stroke-width="1.5" stroke-dasharray="4,4"/>
         </svg>
 
-        <!-- Floating Gmail / Remittance Notification Card -->
+        <!-- Floating SBP / Remittance Notification Card -->
         <div class="floating-doc-card card-bottom-stack">
           <div class="doc-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--color-success); border-color: rgba(34, 197, 94, 0.3);">SBP</div>
           <div class="doc-meta">
@@ -1210,7 +1265,7 @@ footer {
   </div>
 </section>
 
-<!-- 3D ISOMETRIC ARCHITECTURE STACK SECTION -->
+<!-- 3D ISOMETRIC ARCHITECTURE STACK SECTION (ANIMATED HOVER & ELEVATION) -->
 <section id="stack" class="isometric-stack-section">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
@@ -1222,16 +1277,16 @@ footer {
     <div class="isometric-layout-grid">
       <!-- Left Features Column -->
       <div class="stack-card-col">
-        <div class="stack-feature-card scroll-reveal">
-          <div class="mono-label" style="font-size: 10px; margin-bottom: 6px;">LAYER 01</div>
+        <div class="stack-feature-card scroll-reveal" id="card-layer1" onmouseenter="highlightLayer(1)" onmouseleave="resetLayers()">
+          <div class="mono-label" style="font-size: 10px; margin-bottom: 4px;">LAYER 01</div>
           <h3>Data Intake</h3>
-          <p>Continuous ingestion of official developer payment plans, FBR tax circulars, and LDA municipal town planning records.</p>
+          <p>Continuous ingestion of developer payment plans, FBR tax circulars, and LDA municipal records.</p>
         </div>
 
-        <div class="stack-feature-card scroll-reveal">
-          <div class="mono-label" style="font-size: 10px; margin-bottom: 6px;">LAYER 03</div>
+        <div class="stack-feature-card scroll-reveal" id="card-layer3" onmouseenter="highlightLayer(3)" onmouseleave="resetLayers()">
+          <div class="mono-label" style="font-size: 10px; margin-bottom: 4px;">LAYER 03</div>
           <h3>Governance Logic</h3>
-          <p>Adversarial ZeroGPT auditor, strict legal tax audit hedging, and mathematical yield reconciliation checks before approval.</p>
+          <p>Adversarial ZeroGPT auditor, strict legal tax audit hedging, and mathematical yield checks.</p>
         </div>
       </div>
 
@@ -1239,25 +1294,25 @@ footer {
       <div class="isometric-canvas-frame scroll-reveal">
         <svg class="iso-layer-svg" viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Layer 4 (Top: Execution Hub) -->
-          <g transform="translate(20, 20)">
-            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(255, 139, 62, 0.12)" stroke="#ff8b3e" stroke-width="1.8"/>
+          <g id="iso-layer-4" class="iso-plane plane-04" transform="translate(20, 20)" onmouseenter="highlightLayer(4)" onmouseleave="resetLayers()">
+            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(255, 139, 62, 0.14)" stroke="#ff8b3e" stroke-width="1.8"/>
             <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#fbf6ec">04 // EXECUTION HUB</text>
           </g>
 
           <!-- Layer 3 (Governance Logic) -->
-          <g transform="translate(20, 90)">
-            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(34, 197, 94, 0.08)" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <g id="iso-layer-3" class="iso-plane plane-03" transform="translate(20, 90)" onmouseenter="highlightLayer(3)" onmouseleave="resetLayers()">
+            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(34, 197, 94, 0.1)" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3"/>
             <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#22c55e">03 // GOVERNANCE LOGIC</text>
           </g>
 
           <!-- Layer 2 (Workflow Logic) -->
-          <g transform="translate(20, 160)">
-            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(58, 134, 255, 0.08)" stroke="#3a86ff" stroke-width="1.5"/>
+          <g id="iso-layer-2" class="iso-plane plane-02" transform="translate(20, 160)" onmouseenter="highlightLayer(2)" onmouseleave="resetLayers()">
+            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(58, 134, 255, 0.1)" stroke="#3a86ff" stroke-width="1.5"/>
             <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#dfd8d3">02 // WORKFLOW LOGIC</text>
           </g>
 
           <!-- Layer 1 (Bottom: Data Intake) -->
-          <g transform="translate(20, 230)">
+          <g id="iso-layer-1" class="iso-plane" transform="translate(20, 230)" onmouseenter="highlightLayer(1)" onmouseleave="resetLayers()">
             <polygon points="180,0 340,80 180,160 20,80" fill="rgba(39, 34, 31, 0.95)" stroke="#54504e" stroke-width="2"/>
             <polygon points="180,160 340,80 340,110 180,190 20,110 20,80" fill="rgba(20, 16, 14, 0.95)" stroke="#54504e" stroke-width="1.5"/>
             <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ff8b3e">01 // DATA INTAKE</text>
@@ -1267,23 +1322,40 @@ footer {
 
       <!-- Right Features Column -->
       <div class="stack-card-col">
-        <div class="stack-feature-card scroll-reveal">
-          <div class="mono-label" style="font-size: 10px; margin-bottom: 6px;">LAYER 02</div>
+        <div class="stack-feature-card scroll-reveal" id="card-layer2" onmouseenter="highlightLayer(2)" onmouseleave="resetLayers()">
+          <div class="mono-label" style="font-size: 10px; margin-bottom: 4px;">LAYER 02</div>
           <h3>Workflow Logic</h3>
-          <p>Define business objects, map multi-format SEO blueprints, and orchestrate Groq/Gemini LLM reasoning agents.</p>
+          <p>Maps multi-format SEO blueprints and orchestrates Groq/Gemini LLM reasoning agents.</p>
         </div>
 
-        <div class="stack-feature-card scroll-reveal">
-          <div class="mono-label" style="font-size: 10px; margin-bottom: 6px;">LAYER 04</div>
+        <div class="stack-feature-card scroll-reveal" id="card-layer4" onmouseenter="highlightLayer(4)" onmouseleave="resetLayers()">
+          <div class="mono-label" style="font-size: 10px; margin-bottom: 4px;">LAYER 04</div>
           <h3>Execution Hub</h3>
-          <p>Zero-touch automated SSH sync to LiteSpeed servers, sitemap/RSS updates, and green Git contribution dot tracking.</p>
+          <p>Zero-touch automated SSH sync to LiteSpeed servers and green Git contribution tracking.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 8-AGENT NEURAL ARCHITECTURE -->
+<!-- MASTER PIPELINE FLOWCHART ARCHITECTURE (USER DIAGRAM) -->
+<section id="flowchart" class="master-flowchart-section">
+  <div class="container">
+    <div class="section-title-wrap scroll-reveal">
+      <div class="mono-label">END-TO-END FLOWCHART</div>
+      <h2>Production Pipeline Architecture</h2>
+      <p>The complete 6-stage lifecycle from raw trigger to verified live deployment.</p>
+    </div>
+
+    <div class="flowchart-display-frame square-corner-frame scroll-reveal">
+      <div class="corner-tl"></div><div class="corner-tr"></div>
+      <div class="corner-bl"></div><div class="corner-br"></div>
+      <img src="assets/images/pipeline-architecture.png" alt="Pressline Master Architecture Flowchart" class="flowchart-img" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- 8-AGENT NEURAL PIPELINE -->
 <section id="pipeline" class="section-wrapper" style="background: var(--color-black);">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
@@ -1336,7 +1408,7 @@ footer {
           <div class="mono-label" id="agentBadge">STAGE 1 // DISCOVERY</div>
           <h3 id="agentName">Agent 1: Trend &amp; Keyword Synthesis</h3>
           <p id="agentDesc">
-            Queries Groq (Llama 3.3 70B) &amp; Gemini with ground-truth project context and history to uncover high-intent search queries for 2026. Guarantees 100% deduplication with zero generic numbering.
+            Queries Groq (Llama 3.3 70B) &amp; Gemini with ground-truth project context to uncover high-intent search queries for 2026.
           </p>
 
           <ul class="agent-specs-list" id="agentSpecs">
@@ -1353,7 +1425,6 @@ footer {
 <span class="ck-kw">async function</span> <span class="ck-fn">getNextTopic</span>(existingPosts) {
   <span class="ck-kw">const</span> publishedSlugs = <span class="ck-kw">new</span> <span class="ck-fn">Set</span>(existingPosts.<span class="ck-fn">map</span>(p =&gt; p.slug));
   <span class="ck-kw">const</span> prompt = <span class="ck-str">`Synthesize high-intent real estate search topic for 2026...`</span>;
-  
   <span class="ck-kw">const</span> topic = <span class="ck-kw">await</span> <span class="ck-fn">callLLM</span>(prompt, groundTruthContext);
   <span class="ck-kw">return</span> <span class="ck-fn">extractJsonObject</span>(topic);
 }
@@ -1440,7 +1511,7 @@ footer {
           </ul>
         </div>
 
-        <a href="mailto:techsynxx@gmail.com?subject=Pressline%20Starter%20Tier" class="btn-arrakis btn-arrakis-outline" style="width: 100%; text-align: center;">
+        <a href="mailto:exhuzaifa@gmail.com?subject=Pressline%20Starter%20Tier" class="btn-arrakis btn-arrakis-outline" style="width: 100%; text-align: center;">
           GET STARTED
         </a>
       </div>
@@ -1469,7 +1540,7 @@ footer {
           </ul>
         </div>
 
-        <a href="mailto:techsynxx@gmail.com?subject=Pressline%20Growth%20Tier" class="btn-arrakis" style="width: 100%; text-align: center;">
+        <a href="mailto:exhuzaifa@gmail.com?subject=Pressline%20Growth%20Tier" class="btn-arrakis" style="width: 100%; text-align: center;">
           DEPLOY CLUSTER
         </a>
       </div>
@@ -1498,7 +1569,7 @@ footer {
           </ul>
         </div>
 
-        <a href="mailto:techsynxx@gmail.com?subject=Pressline%20Agency%20Tier" class="btn-arrakis btn-arrakis-outline" style="width: 100%; text-align: center;">
+        <a href="mailto:exhuzaifa@gmail.com?subject=Pressline%20Agency%20Tier" class="btn-arrakis btn-arrakis-outline" style="width: 100%; text-align: center;">
           CONTACT SALES
         </a>
       </div>
@@ -1527,7 +1598,7 @@ footer {
           </ul>
         </div>
 
-        <a href="mailto:techsynxx@gmail.com?subject=Pressline%20DFY%20Retainer" class="btn-arrakis btn-arrakis-outline" style="width: 100%; text-align: center;">
+        <a href="mailto:exhuzaifa@gmail.com?subject=Pressline%20DFY%20Retainer" class="btn-arrakis btn-arrakis-outline" style="width: 100%; text-align: center;">
           BOOK CALL
         </a>
       </div>
@@ -1545,7 +1616,7 @@ footer {
       <div class="mono-label pulse-green">PRODUCTION READY</div>
       <h2>Stop Publishing Robot Fluff. Launch Autonomous Authority.</h2>
       <p>Connect your domain, configure your ground-truth knowledge base, and let 8 specialized agents publish rankable content 24/7.</p>
-      <a href="mailto:techsynxx@gmail.com?subject=Launch%20Pressline%20Engine" class="btn-arrakis" style="padding: 12px 32px; font-size: 13px;">
+      <a href="mailto:exhuzaifa@gmail.com?subject=Launch%20Pressline%20Engine" class="btn-arrakis" style="padding: 12px 32px; font-size: 13px;">
         START YOUR DEPLOYMENT
       </a>
     </div>
@@ -1565,7 +1636,7 @@ footer {
           </svg>
           pressline
         </a>
-        <p style="font-size: 13px; color: var(--color-stroke-3); margin-top: 12px; line-height: 1.6;">
+        <p style="font-size: 13px; color: var(--color-stroke-3); margin-top: 10px; line-height: 1.5;">
           Autonomous 8-Agent Content Engineering Engine with Ground-Truth Verification &amp; Anti-AI Humanization.
         </p>
       </div>
@@ -1575,7 +1646,7 @@ footer {
         <ul>
           <li><a href="#pipeline">8-Agent Pipeline</a></li>
           <li><a href="#stack">Isometric Stack</a></li>
-          <li><a href="#verification">Verification Audit</a></li>
+          <li><a href="#flowchart">Flowchart</a></li>
           <li><a href="#pricing">Pricing Matrix</a></li>
         </ul>
       </div>
@@ -1593,7 +1664,7 @@ footer {
       <div class="footer-col">
         <h4>Direct Contact</h4>
         <ul>
-          <li><a href="mailto:techsynxx@gmail.com">techsynxx@gmail.com</a></li>
+          <li><a href="mailto:exhuzaifa@gmail.com">exhuzaifa@gmail.com</a></li>
           <li><a href="https://wa.me/923268282409" target="_blank" rel="noopener">WhatsApp Direct</a></li>
           <li><a href="https://github.com/Techsynx/pressline" target="_blank" rel="noopener">Repository</a></li>
         </ul>
@@ -1602,7 +1673,7 @@ footer {
 
     <div class="footer-credit-bar">
       <div>&copy; 2026 Pressline Engine. Built by Huzaifa Malik (Techsynx). All rights reserved.</div>
-      <div>Attribution: Techsynx &lt;techsynxx@gmail.com&gt;</div>
+      <div>Attribution: Huzaifa Malik &lt;exhuzaifa@gmail.com&gt;</div>
     </div>
   </div>
 </footer>
@@ -1628,10 +1699,33 @@ function switchVideo(idx) {
     videoEl.style.opacity = 1;
     document.getElementById('videoBadge').textContent = v.badge;
     document.getElementById('telemetryValue').innerHTML = `${v.val} <span class="sub">${v.sub}</span>`;
-  }, 250);
+  }, 200);
 
   const btns = document.querySelectorAll('.hud-tab-btn');
   btns.forEach((b, i) => b.classList.toggle('active', i === idx));
+}
+
+// Isometric Stack Highlight Sync
+function highlightLayer(layerNum) {
+  for (let i = 1; i <= 4; i++) {
+    const plane = document.getElementById('iso-layer-' + i);
+    const card = document.getElementById('card-layer' + i);
+    if (plane) plane.style.opacity = (i === layerNum) ? '1' : '0.35';
+    if (plane && i === layerNum) plane.style.transform = 'translateY(-12px)';
+    if (card) card.classList.toggle('highlighted', i === layerNum);
+  }
+}
+
+function resetLayers() {
+  for (let i = 1; i <= 4; i++) {
+    const plane = document.getElementById('iso-layer-' + i);
+    const card = document.getElementById('card-layer' + i);
+    if (plane) {
+      plane.style.opacity = '1';
+      plane.style.transform = 'none';
+    }
+    if (card) card.classList.remove('highlighted');
+  }
 }
 
 // 8-Agent Architecture Matrix
@@ -1639,7 +1733,7 @@ const AGENTS = [
   {
     badge: "STAGE 1 // DISCOVERY",
     name: "Agent 1: Trend & Keyword Synthesis",
-    desc: "Queries Groq (Llama 3.3 70B) & Gemini with ground-truth project context and history to uncover high-intent search queries for 2026. Guarantees 100% deduplication with zero generic numbering.",
+    desc: "Queries Groq (Llama 3.3 70B) & Gemini with ground-truth project context to uncover high-intent search queries for 2026.",
     specs: [
       ["Primary Engine", "Groq Llama 3.3 70B"],
       ["Failover Engine", "Gemini 2.5 Flash"],
@@ -1650,7 +1744,6 @@ const AGENTS = [
 <span class="ck-kw">async function</span> <span class="ck-fn">getNextTopic</span>(existingPosts) {
   <span class="ck-kw">const</span> publishedSlugs = <span class="ck-kw">new</span> <span class="ck-fn">Set</span>(existingPosts.<span class="ck-fn">map</span>(p =&gt; p.slug));
   <span class="ck-kw">const</span> prompt = <span class="ck-str">\`Synthesize high-intent real estate search topic for 2026...\`</span>;
-  
   <span class="ck-kw">const</span> topic = <span class="ck-kw">await</span> <span class="ck-fn">callLLM</span>(prompt, groundTruthContext);
   <span class="ck-kw">return</span> <span class="ck-fn">extractJsonObject</span>(topic);
 }`
@@ -1658,7 +1751,7 @@ const AGENTS = [
   {
     badge: "STAGE 2 // ARCHITECTURE",
     name: "Agent 2: SEO Blueprint Architect",
-    desc: "Dynamically picks one of 4 format archetypes (Deep-Dive, Comparison Matrix, Legal Explainer, Commentary). Builds custom table of contents, read-time estimator, and FAQ Schema.org JSON markup.",
+    desc: "Dynamically picks one of 4 format archetypes. Builds custom TOC, read-time estimator, and FAQ Schema JSON.",
     specs: [
       ["Primary Engine", "Groq Llama 3.3 70B"],
       ["Format Archetypes", "4 Rotating Structures"],
@@ -1669,14 +1762,13 @@ const AGENTS = [
 <span class="ck-kw">async function</span> <span class="ck-fn">buildOutline</span>(topicData) {
   <span class="ck-kw">const</span> format = <span class="ck-fn">selectArchetype</span>(topicData.category);
   <span class="ck-kw">const</span> prompt = <span class="ck-str">\`Build non-cookie-cutter blueprint for \${format}...\`</span>;
-  
   <span class="ck-kw">return await</span> <span class="ck-fn">callGroq</span>(prompt, systemPrompt);
 }`
   },
   {
     badge: "STAGE 3 // DRAFTING",
     name: "Agent 3: Master Writer v15",
-    desc: "Drafts 1,400+ words of fact-verified HTML strictly constrained by your Knowledge Base. Enforces exact FBR tax schedules (3% to 15%) and mathematical payment reconciliation (20%+65%+15%=100%).",
+    desc: "Drafts 1,400+ words of fact-verified HTML strictly constrained by your Knowledge Base. Enforces exact FBR tax schedules and math reconciliation.",
     specs: [
       ["Primary Engine", "Gemini 2.5 / 3.6 Flash"],
       ["Word Count", "1,400+ Words"],
@@ -1692,7 +1784,7 @@ const AGENTS = [
   {
     badge: "STAGE 4 // HUMANIZATION",
     name: "Agent 4: Neural Humanizer v12",
-    desc: "Injects sentence burstiness (mixing 3-6 word punch lines with natural explanations), strips invisible Unicode watermarks, hedges tax audit claims, and dismantles robotic transitions.",
+    desc: "Injects sentence burstiness, strips invisible Unicode watermarks, hedges tax audit claims, and dismantles robotic transitions.",
     specs: [
       ["Neural Pass", "Groq Llama 3.3 / Qwen"],
       ["Regex Filter Layers", "5 Sanitization Passes"],
@@ -1709,7 +1801,7 @@ const AGENTS = [
   {
     badge: "STAGE 5 // QUALITY GATE",
     name: "Agent 5: Critic Quality Gatekeeper",
-    desc: "Audits every draft with an adversarial model before publication. Halts the build and triggers an automatic targeted rewrite if the predicted AI score exceeds 15% or any math table fails reconciliation.",
+    desc: "Audits every draft with an adversarial model. Triggers an automatic rewrite if AI score > 15% or any math table fails reconciliation.",
     specs: [
       ["Adversarial Engine", "Llama 3.3 70B Critic"],
       ["Detection Threshold", "Score &lt;= 15% Mandatory"],
@@ -1719,14 +1811,14 @@ const AGENTS = [
     code: `<span class="ck-cm">// Agent 5: Adversarial Quality Gate</span>
 <span class="ck-kw">async function</span> <span class="ck-fn">auditDraft</span>(draftHtml) {
   <span class="ck-kw">const</span> score = <span class="ck-kw">await</span> <span class="ck-fn">predictZeroGPTScore</span>(draftHtml);
-  <span class="ck-kw">if</span> (score &gt; <span class="ck-num">15</span>) <span class="ck-kw">throw new</span> <span class="ck-fn">Error</span>(<span class="ck-str">'AI Score exceeded. Rewriting.'</span>);
+  <span class="ck-kw">if</span> (score &gt; 15) <span class="ck-kw">throw new</span> <span class="ck-fn">Error</span>('AI Score exceeded');
   <span class="ck-kw">return true</span>;
 }`
   },
   {
     badge: "STAGE 6 // GRAPHICS",
     name: "Agent 6: Studio Graphic Engine",
-    desc: "Generates responsive, native 16:9 vector SVG cover artwork with custom color gradients, gold accents, category badges, and author verification marks. Zero third-party image API costs or latency.",
+    desc: "Generates responsive, native 16:9 vector SVG cover artwork with custom color gradients, badges, and author verification marks.",
     specs: [
       ["Format", "Native Inline Vector SVG"],
       ["Aspect Ratio", "16:9 Responsive (1200x630)"],
@@ -1744,7 +1836,7 @@ const AGENTS = [
   {
     badge: "STAGE 7 // COMPILER",
     name: "Agent 7: Static HTML Compiler",
-    desc: "Compiles ultra-lightweight static HTML5 (< 35 KB), injects Google Knowledge Graph Schema.org Person and BlogPosting JSON-LD, updates blog.html hub, and regenerates sitemap.xml and RSS feed.xml.",
+    desc: "Compiles static HTML5, injects Schema.org JSON-LD, updates blog hub, and regenerates sitemap.xml and RSS feed.xml.",
     specs: [
       ["Output", "Pure Static HTML5"],
       ["Structured Data", "Schema.org BlogPosting &amp; Person"],
@@ -1761,17 +1853,17 @@ const AGENTS = [
   {
     badge: "STAGE 8 // DEPLOYMENT",
     name: "Agent 8: Production Deployer &amp; Git Sync",
-    desc: "Transfers compiled assets to live web servers via SSH/SCP (port 65002), enforces Unix 755/644 file permissions, flushes cache, and pushes git commits under Techsynx <techsynxx@gmail.com> for green activity dots.",
+    desc: "Transfers compiled assets to live servers via SSH/SCP (port 65002), enforces 755/644 permissions, flushes cache, and pushes git commits.",
     specs: [
       ["Protocol", "Encrypted SSH / SCP"],
       ["Permissions", "chmod 755 (dirs) / 644 (files)"],
-      ["Git Attribution", "Techsynx &lt;techsynxx@gmail.com&gt;"],
+      ["Git Attribution", "Huzaifa Malik &lt;exhuzaifa@gmail.com&gt;"],
       ["Live Status", "100% Autonomous (Zero-Touch)"]
     ],
     code: `<span class="ck-cm">// Agent 8: SSH Deployer &amp; Git Sync</span>
 <span class="ck-kw">async function</span> <span class="ck-fn">deployProduction</span>() {
   <span class="ck-kw">await</span> <span class="ck-fn">scpSyncToHostinger</span>();
-  <span class="ck-kw">await</span> <span class="ck-fn">gitCommitAndPush</span>(<span class="ck-str">'Techsynx &lt;techsynxx@gmail.com&gt;'</span>);
+  <span class="ck-kw">await</span> <span class="ck-fn">gitCommitAndPush</span>('Huzaifa Malik &lt;exhuzaifa@gmail.com&gt;');
 }`
   }
 ];
