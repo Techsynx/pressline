@@ -127,28 +127,6 @@ a {
 /* ==========================================================================
    ARRAKIS TECHNICAL SQUARE BRACKETS & CORNER FRAMES
    ========================================================================== */
-.square-bracket-box {
-  position: relative;
-  border-top: 1px solid var(--color-stroke-3);
-  border-bottom: 1px solid var(--color-stroke-3);
-  background: var(--color-night);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.square-bracket-box::before,
-.square-bracket-box::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--color-stroke-3);
-  pointer-events: none;
-}
-
-.square-bracket-box::before { left: 0; }
-.square-bracket-box::after { right: 0; }
-
 .square-corner-frame {
   position: relative;
   background: var(--color-midnight);
@@ -301,35 +279,34 @@ nav {
 }
 
 /* ==========================================================================
-   HERO SECTION WITH ARRAKIS VIDEO HUD & INTERACTIVE WORKFLOW
+   HERO SECTION (FIXED TIGHT FIT - NO EMPTY SPACE ON MOBILE)
    ========================================================================== */
 .hero-wrapper {
-  padding: 60px 0 80px;
+  padding: 48px 0 64px;
   position: relative;
   background: var(--color-black);
 }
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 40px;
-  align-items: stretch;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 36px;
+  align-items: start;
 }
 
 .hero-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 32px 0;
+  padding-top: 12px;
 }
 
 .hero-left h1 {
   font-family: var(--font-heading);
-  font-size: clamp(38px, 4.8vw, 64px);
+  font-size: clamp(36px, 4.5vw, 60px);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.06;
   letter-spacing: -0.03em;
-  margin: 20px 0;
+  margin: 18px 0;
   color: var(--color-dust);
 }
 
@@ -338,11 +315,11 @@ nav {
 }
 
 .hero-left p.desc {
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.65;
   color: var(--color-stroke-2);
-  max-width: 540px;
-  margin-bottom: 36px;
+  max-width: 520px;
+  margin-bottom: 32px;
 }
 
 .hero-ctas {
@@ -352,8 +329,8 @@ nav {
 }
 
 .hero-stats-ticker {
-  margin-top: 48px;
-  padding-top: 24px;
+  margin-top: 36px;
+  padding-top: 20px;
   border-top: 1px solid var(--color-stroke-3);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -375,18 +352,19 @@ nav {
   color: var(--color-dust);
 }
 
-/* Video Showcase HUD */
+/* Video Showcase HUD (Tightly Scaled) */
 .hero-hud-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: auto;
+  overflow: hidden;
 }
 
 .hud-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 10px 14px;
   background: var(--color-midnight);
   border-bottom: 1px solid var(--color-stroke-3);
 }
@@ -402,7 +380,7 @@ nav {
   background: none;
   border: none;
   border-right: 1px solid var(--color-stroke-3);
-  padding: 10px 8px;
+  padding: 8px 4px;
   text-align: center;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -426,6 +404,7 @@ nav {
   aspect-ratio: 16/9;
   background: #000000;
   overflow: hidden;
+  height: auto;
 }
 
 .video-viewport video {
@@ -433,26 +412,25 @@ nav {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: opacity 0.5s ease;
 }
 
 .video-overlay-badge {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 10px;
+  left: 10px;
   background: rgba(11, 9, 7, 0.85);
   backdrop-filter: blur(8px);
   border: 1px solid var(--color-stroke-3);
-  padding: 4px 10px;
+  padding: 3px 8px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   color: var(--color-sun);
   border-radius: 2px;
   z-index: 2;
 }
 
 .hud-bottom-telemetry {
-  padding: 16px;
+  padding: 14px 16px;
   background: var(--color-night);
   border-top: 1px solid var(--color-stroke-3);
 }
@@ -465,82 +443,211 @@ nav {
 
 .telemetry-live-val {
   font-family: var(--font-heading);
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--color-dust);
   letter-spacing: -0.02em;
 }
 
 .telemetry-live-val span.sub {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--color-sun);
   font-family: var(--font-mono);
 }
 
 /* ==========================================================================
-   ARRAKIS ORBIT ARC & ENTERPRISE HORIZON METRICS
+   ARRAKIS "THE PROBLEM" ORBIT SHOWCASE & ANIMATED FLOATING CARDS
    ========================================================================== */
-.orbit-showcase-section {
+.problem-orbit-section {
   position: relative;
-  padding: 80px 0 100px;
-  background: linear-gradient(180deg, var(--color-black) 0%, var(--color-night) 100%);
+  padding: 100px 0 120px;
+  background: radial-gradient(circle at 50% 10%, rgba(255, 139, 62, 0.05) 0%, var(--color-black) 70%);
   border-top: 1px solid var(--color-stroke-3);
   border-bottom: 1px solid var(--color-stroke-3);
+  overflow: hidden;
 }
 
-.orbit-arc-container {
-  position: relative;
+.problem-orbit-container {
+  max-width: 920px;
+  margin: 0 auto;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 50px;
+  position: relative;
 }
 
-.orbit-arc-container svg {
+.orbit-arc-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 30px;
+}
+
+.orbit-arc-svg {
   width: 100%;
   height: auto;
   opacity: 0.35;
 }
 
-.orbit-metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.orbit-metric-box {
+/* Floating Card Stacks */
+.floating-doc-card {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--color-midnight);
   border: 1px solid var(--color-stroke-3);
-  padding: 28px 20px;
-  text-align: center;
-  position: relative;
+  padding: 10px 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  transition: all 0.4s ease;
 }
 
-.orbit-metric-box .metric-num {
-  font-family: var(--font-heading);
-  font-size: clamp(34px, 3.8vw, 50px);
-  font-weight: 800;
-  line-height: 1;
-  color: var(--color-dust);
-  margin-bottom: 8px;
+.card-top-stack {
+  top: 18%;
+  animation: floatDoc 6s ease-in-out infinite;
 }
 
-.orbit-metric-box .metric-num em {
-  font-style: normal;
+.card-bottom-stack {
+  bottom: 0;
+  animation: floatEmail 6s ease-in-out infinite 3s;
+}
+
+@keyframes floatDoc {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
+}
+
+@keyframes floatEmail {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 8px); }
+}
+
+.doc-icon {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 139, 62, 0.15);
+  border: 1px solid rgba(255, 139, 62, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-family: var(--font-mono);
   color: var(--color-sun);
 }
 
-.orbit-metric-box .metric-lbl {
+.doc-meta {
+  text-align: left;
+}
+
+.doc-name {
   font-family: var(--font-mono);
   font-size: 12px;
+  font-weight: 700;
+  color: var(--color-dust);
+}
+
+.doc-size {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-stroke-3);
+}
+
+.problem-big-statement {
+  margin: 60px 0;
+  position: relative;
+  z-index: 5;
+}
+
+.problem-big-statement h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.6vw, 46px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-dust);
+  margin-bottom: 24px;
+}
+
+.problem-big-statement p.sub-bottleneck {
+  font-size: 18px;
+  line-height: 1.6;
   color: var(--color-stroke-2);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 /* ==========================================================================
-   THE BOTTLENECK / THE 4 FATAL FLAWS
+   3D ISOMETRIC ARCHITECTURE STACK SECTION
+   ========================================================================== */
+.isometric-stack-section {
+  padding: 120px 0;
+  position: relative;
+  background: var(--color-night);
+  border-bottom: 1px solid var(--color-stroke-3);
+}
+
+.isometric-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.stack-card-col {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.stack-feature-card {
+  padding: 24px;
+  border-bottom: 1px solid var(--color-stroke-3);
+  transition: all 0.3s ease;
+}
+
+.stack-feature-card:hover {
+  border-bottom-color: var(--color-sun);
+  transform: translateY(-2px);
+}
+
+.stack-feature-card h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-dust);
+}
+
+.stack-feature-card p {
+  font-size: 14px;
+  color: var(--color-stroke-2);
+  line-height: 1.6;
+}
+
+/* Central Isometric Wireframe Canvas */
+.isometric-canvas-frame {
+  text-align: center;
+  position: relative;
+  padding: 20px 0;
+}
+
+.iso-layer-svg {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
+  transition: transform 0.5s ease;
+}
+
+.isometric-canvas-frame:hover .iso-layer-svg {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* ==========================================================================
+   INTERACTIVE 8-AGENT NEURAL PIPELINE
    ========================================================================== */
 .section-wrapper {
   padding: 100px 0;
@@ -569,40 +676,6 @@ nav {
   line-height: 1.6;
 }
 
-.flaws-grid-arrakis {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.flaw-item-frame {
-  padding: 32px;
-}
-
-.flaw-index-tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-sun);
-  margin-bottom: 12px;
-}
-
-.flaw-item-frame h3 {
-  font-family: var(--font-heading);
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--color-dust);
-}
-
-.flaw-item-frame p {
-  font-size: 14.5px;
-  color: var(--color-stroke-2);
-  line-height: 1.65;
-}
-
-/* ==========================================================================
-   INTERACTIVE 8-AGENT NEURAL ARCHITECTURE
-   ========================================================================== */
 .architecture-box {
   padding: 36px;
 }
@@ -955,9 +1028,10 @@ footer {
   transform: translateY(0);
 }
 
-/* Responsive */
+/* Responsive Fixes */
 @media (max-width: 1024px) {
   .hero-layout { grid-template-columns: 1fr; }
+  .isometric-layout-grid { grid-template-columns: 1fr; gap: 40px; }
   .pricing-matrix-arrakis { grid-template-columns: repeat(2, 1fr); }
   .agent-nav-grid { grid-template-columns: repeat(2, 1fr); }
   .agent-body-pane { grid-template-columns: 1fr; }
@@ -965,11 +1039,13 @@ footer {
 
 @media (max-width: 768px) {
   .nav-menu { display: none; }
+  .hero-wrapper { padding: 32px 0 48px; }
+  .hero-left { padding-top: 0; }
+  .hero-hud-card { margin-top: 24px; }
+  .video-viewport { aspect-ratio: 16/9; }
   .orbit-metrics-grid { grid-template-columns: repeat(2, 1fr); }
-  .flaws-grid-arrakis { grid-template-columns: 1fr; }
   .audit-split-grid { grid-template-columns: 1fr; }
   .pricing-matrix-arrakis { grid-template-columns: 1fr; }
-  .hero-wrapper { padding: 40px 0 60px; }
   .cta-deploy-block { padding: 36px 20px; }
 }
 </style>
@@ -991,6 +1067,7 @@ footer {
 
     <div class="nav-menu">
       <a href="#pipeline">ARCHITECTURE</a>
+      <a href="#stack">STACK</a>
       <a href="#verification">VERIFICATION</a>
       <a href="#pricing">PRICING</a>
       <a href="https://github.com/Techsynx/pressline" target="_blank" rel="noopener">GITHUB</a>
@@ -1004,7 +1081,7 @@ footer {
   </div>
 </nav>
 
-<!-- HERO SECTION (WITH VIDEO WORKFLOW HUD) -->
+<!-- HERO SECTION (FIXED TIGHT FIT - NO EMPTY SPACE ON MOBILE) -->
 <header class="hero-wrapper">
   <div class="container">
     <div class="hero-layout">
@@ -1084,97 +1161,130 @@ footer {
   </div>
 </header>
 
-<!-- ARRAKIS HORIZON METRICS -->
-<section class="orbit-showcase-section">
+<!-- ARRAKIS "THE PROBLEM" ORBIT SHOWCASE & ANIMATED FLOATING CARDS -->
+<section class="problem-orbit-section">
   <div class="container">
-    <div class="orbit-arc-container">
-      <svg viewBox="0 0 740 215" fill="none">
-        <path d="M2.66 212.25C39.83 147.87 93.3 94.4 157.68 57.24C222.06 20.07 295.09 0.5 369.43 0.5C443.77 0.5 516.8 20.07 581.18 57.24C645.56 94.4 699.02 147.87 736.19 212.25" stroke="#ff8b3e" stroke-width="1.5" stroke-dasharray="4,4"/>
-      </svg>
-      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-stroke-3); text-transform: uppercase; letter-spacing: 0.12em; margin-top: -10px;">
-        MISSION-CRITICAL SPECIFICATIONS
-      </div>
-    </div>
+    <div class="problem-orbit-container">
+      <div class="mono-label" style="margin-bottom: 20px;">THE BOTTLENECK</div>
 
-    <div class="orbit-metrics-grid">
-      <div class="orbit-metric-box square-corner-frame scroll-reveal">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="metric-num">10<em>–</em>15<em>%</em></div>
-        <div class="metric-lbl">ZeroGPT AI Detection Ceiling</div>
-      </div>
+      <div class="orbit-arc-wrap">
+        <!-- Top Arc SVG -->
+        <svg class="orbit-arc-svg" viewBox="0 0 740 215" fill="none">
+          <path d="M2.66 212.25C39.83 147.87 93.3 94.4 157.68 57.24C222.06 20.07 295.09 0.5 369.43 0.5C443.77 0.5 516.8 20.07 581.18 57.24C645.56 94.4 699.02 147.87 736.19 212.25" stroke="#ff8b3e" stroke-width="1.5" stroke-dasharray="4,4"/>
+        </svg>
 
-      <div class="orbit-metric-box square-corner-frame scroll-reveal">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="metric-num">100<em>%</em></div>
-        <div class="metric-lbl">Mathematical Reconciliation</div>
+        <!-- Floating PDF Card -->
+        <div class="floating-doc-card card-top-stack">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-meta">
+            <div class="doc-name">Etihad_Town_Payment_Schedule_2026.pdf</div>
+            <div class="doc-size">486 KB • Ground Truth Source</div>
+          </div>
+        </div>
       </div>
 
-      <div class="orbit-metric-box square-corner-frame scroll-reveal">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="metric-num">3<em>x</em></div>
-        <div class="metric-lbl">Daily Autonomous Deployments</div>
+      <!-- Core Provocative Statement -->
+      <div class="problem-big-statement scroll-reveal">
+        <h2>84% of digital brands publish with AI, but &lt;5% achieve sustained Google rankings without detection penalties.</h2>
+        <p class="sub-bottleneck">
+          The bottleneck isn't AI generation, it's the verification gap — factual grounding, mathematical reconciliation, watermark purging, and autonomous execution.
+        </p>
       </div>
 
-      <div class="orbit-metric-box square-corner-frame scroll-reveal">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="metric-num">&lt; 90<em>s</em></div>
-        <div class="metric-lbl">Trend-to-Live Production</div>
+      <!-- Bottom Trajectory Arc & Floating Email Card -->
+      <div class="orbit-arc-wrap" style="margin-top: 30px;">
+        <svg class="orbit-arc-svg" viewBox="0 0 740 215" fill="none" style="transform: scaleY(-1);">
+          <path d="M2.66 212.25C39.83 147.87 93.3 94.4 157.68 57.24C222.06 20.07 295.09 0.5 369.43 0.5C443.77 0.5 516.8 20.07 581.18 57.24C645.56 94.4 699.02 147.87 736.19 212.25" stroke="#ff8b3e" stroke-width="1.5" stroke-dasharray="4,4"/>
+        </svg>
+
+        <!-- Floating Gmail / Remittance Notification Card -->
+        <div class="floating-doc-card card-bottom-stack">
+          <div class="doc-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--color-success); border-color: rgba(34, 197, 94, 0.3);">SBP</div>
+          <div class="doc-meta">
+            <div class="doc-name">State Bank of Pakistan — Inward Remittance Notification</div>
+            <div class="doc-size">RDA Foreign Currency Remittance Verified • 2 mins ago</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE BOTTLENECK / THE 4 FLAWS -->
-<section class="section-wrapper">
+<!-- 3D ISOMETRIC ARCHITECTURE STACK SECTION -->
+<section id="stack" class="isometric-stack-section">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
-      <div class="mono-label">THE PROBLEM</div>
-      <h2>The Bottleneck Isn't AI Generation. It's The Verification Gap.</h2>
-      <p>Standard AI writing tools output generic prompt wrappers that hallucinate prices, fail mathematical consistency, and get penalized by search ranking algorithms.</p>
+      <div class="mono-label">LAYERED REASONING ENGINE</div>
+      <h2>Four-Tier Agentic Architecture Stack</h2>
+      <p>How raw real estate data transforms into audited, rankable, and deployed publishing assets.</p>
     </div>
 
-    <div class="flaws-grid-arrakis">
-      <div class="flaw-item-frame square-corner-frame scroll-reveal">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flaw-index-tag">[ 01 // HALLUCINATION ]</div>
-        <h3>Unanchored Numbers &amp; False Precision</h3>
-        <p>Standard LLMs invent property taxes, municipal NOC codes, and non-existent regulations. One fact check from an investor destroys your domain authority.</p>
+    <div class="isometric-layout-grid">
+      <!-- Left Features Column -->
+      <div class="stack-card-col">
+        <div class="stack-feature-card scroll-reveal">
+          <div class="mono-label" style="font-size: 10px; margin-bottom: 6px;">LAYER 01</div>
+          <h3>Data Intake</h3>
+          <p>Continuous ingestion of official developer payment plans, FBR tax circulars, and LDA municipal town planning records.</p>
+        </div>
+
+        <div class="stack-feature-card scroll-reveal">
+          <div class="mono-label" style="font-size: 10px; margin-bottom: 6px;">LAYER 03</div>
+          <h3>Governance Logic</h3>
+          <p>Adversarial ZeroGPT auditor, strict legal tax audit hedging, and mathematical yield reconciliation checks before approval.</p>
+        </div>
       </div>
 
-      <div class="flaw-item-frame square-corner-frame scroll-reveal">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flaw-index-tag">[ 02 // MATHEMATICAL COLLAPSE ]</div>
-        <h3>Broken Payment Tables</h3>
-        <p>Standard AI generates installment tables where down payments, quarterly installments, and possession fees sum to 125% or 80% instead of 100%.</p>
+      <!-- Center 3D Isometric Stack Wireframe -->
+      <div class="isometric-canvas-frame scroll-reveal">
+        <svg class="iso-layer-svg" viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Layer 4 (Top: Execution Hub) -->
+          <g transform="translate(20, 20)">
+            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(255, 139, 62, 0.12)" stroke="#ff8b3e" stroke-width="1.8"/>
+            <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#fbf6ec">04 // EXECUTION HUB</text>
+          </g>
+
+          <!-- Layer 3 (Governance Logic) -->
+          <g transform="translate(20, 90)">
+            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(34, 197, 94, 0.08)" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#22c55e">03 // GOVERNANCE LOGIC</text>
+          </g>
+
+          <!-- Layer 2 (Workflow Logic) -->
+          <g transform="translate(20, 160)">
+            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(58, 134, 255, 0.08)" stroke="#3a86ff" stroke-width="1.5"/>
+            <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#dfd8d3">02 // WORKFLOW LOGIC</text>
+          </g>
+
+          <!-- Layer 1 (Bottom: Data Intake) -->
+          <g transform="translate(20, 230)">
+            <polygon points="180,0 340,80 180,160 20,80" fill="rgba(39, 34, 31, 0.95)" stroke="#54504e" stroke-width="2"/>
+            <polygon points="180,160 340,80 340,110 180,190 20,110 20,80" fill="rgba(20, 16, 14, 0.95)" stroke="#54504e" stroke-width="1.5"/>
+            <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ff8b3e">01 // DATA INTAKE</text>
+          </g>
+        </svg>
       </div>
 
-      <div class="flaw-item-frame square-corner-frame scroll-reveal">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flaw-index-tag">[ 03 // DETECTABILITY TRAP ]</div>
-        <h3>Predictable Syntactic Cadence</h3>
-        <p>Formulas like "In today's fast-paced landscape..." trigger 80%+ scores on ZeroGPT and GPTZero, alerting search crawlers to deprioritize your index.</p>
-      </div>
+      <!-- Right Features Column -->
+      <div class="stack-card-col">
+        <div class="stack-feature-card scroll-reveal">
+          <div class="mono-label" style="font-size: 10px; margin-bottom: 6px;">LAYER 02</div>
+          <h3>Workflow Logic</h3>
+          <p>Define business objects, map multi-format SEO blueprints, and orchestrate Groq/Gemini LLM reasoning agents.</p>
+        </div>
 
-      <div class="flaw-item-frame square-corner-frame scroll-reveal">
-        <div class="corner-tl"></div><div class="corner-tr"></div>
-        <div class="corner-bl"></div><div class="corner-br"></div>
-        <div class="flaw-index-tag">[ 04 // WORKFLOW FRICTION ]</div>
-        <h3>Manual Formatting &amp; Deploy Fatigue</h3>
-        <p>Drafting is only 15% of publishing. You still spend hours formatting HTML, creating graphics, generating Schema JSON-LD, updating sitemaps, and syncing servers.</p>
+        <div class="stack-feature-card scroll-reveal">
+          <div class="mono-label" style="font-size: 10px; margin-bottom: 6px;">LAYER 04</div>
+          <h3>Execution Hub</h3>
+          <p>Zero-touch automated SSH sync to LiteSpeed servers, sitemap/RSS updates, and green Git contribution dot tracking.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 8-AGENT NEURAL ARCHITECTURE -->
-<section id="pipeline" class="section-wrapper" style="background: var(--color-night);">
+<section id="pipeline" class="section-wrapper" style="background: var(--color-black);">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
       <div class="mono-label">NEURAL PIPELINE</div>
@@ -1255,7 +1365,7 @@ footer {
 </section>
 
 <!-- GROUND TRUTH VERIFICATION PROOF -->
-<section id="verification" class="section-wrapper">
+<section id="verification" class="section-wrapper" style="background: var(--color-night);">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
       <div class="mono-label">VERIFICATION PROOF</div>
@@ -1298,7 +1408,7 @@ footer {
 </section>
 
 <!-- PRICING TIERS -->
-<section id="pricing" class="section-wrapper" style="background: var(--color-night);">
+<section id="pricing" class="section-wrapper" style="background: var(--color-black);">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
       <div class="mono-label">COMMERCIAL ACCESS</div>
@@ -1464,6 +1574,7 @@ footer {
         <h4>Architecture</h4>
         <ul>
           <li><a href="#pipeline">8-Agent Pipeline</a></li>
+          <li><a href="#stack">Isometric Stack</a></li>
           <li><a href="#verification">Verification Audit</a></li>
           <li><a href="#pricing">Pricing Matrix</a></li>
         </ul>
