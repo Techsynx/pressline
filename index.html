@@ -93,10 +93,10 @@
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Custom Sleek Dark Scrollbar (Zero White Bars) */
+/* Custom Sleek Dark Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-black);
@@ -189,7 +189,7 @@ a {
 }
 
 /* ==========================================================================
-   NAVIGATION
+   NAVIGATION (GITHUB OPTION REMOVED)
    ========================================================================== */
 nav {
   position: sticky;
@@ -290,7 +290,7 @@ nav {
 }
 
 /* ==========================================================================
-   HERO SECTION (PUNCHY COPY & TIGHT HUD)
+   HERO SECTION
    ========================================================================== */
 .hero-wrapper {
   padding: 40px 0 54px;
@@ -303,11 +303,6 @@ nav {
   grid-template-columns: 1.15fr 0.85fr;
   gap: 32px;
   align-items: start;
-}
-
-.hero-left {
-  display: flex;
-  flex-direction: column;
 }
 
 .hero-left h1 {
@@ -464,7 +459,7 @@ nav {
 }
 
 /* ==========================================================================
-   ARRAKIS "THE PROBLEM" ORBIT SHOWCASE & ANIMATED FLOATING CARDS
+   ARRAKIS "THE PROBLEM" ORBIT SHOWCASE
    ========================================================================== */
 .problem-orbit-section {
   position: relative;
@@ -495,7 +490,6 @@ nav {
   opacity: 0.35;
 }
 
-/* Floating Card Stacks */
 .floating-doc-card {
   position: absolute;
   left: 50%;
@@ -587,7 +581,7 @@ nav {
 }
 
 /* ==========================================================================
-   3D ISOMETRIC ARCHITECTURE STACK SECTION (ANIMATED HOVER & ELEVATION)
+   3D ISOMETRIC ARCHITECTURE STACK SECTION (FIXED NO COLLAPSE)
    ========================================================================== */
 .isometric-stack-section {
   padding: 90px 0;
@@ -657,7 +651,6 @@ nav {
   line-height: 1.55;
 }
 
-/* Central Isometric Wireframe Canvas */
 .isometric-canvas-frame {
   text-align: center;
   position: relative;
@@ -672,59 +665,189 @@ nav {
   filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
 }
 
-.iso-plane {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* Base transforms preserved via CSS variable translate to prevent collapse */
+.iso-plane-layer {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
   cursor: pointer;
 }
 
-.iso-plane:hover {
-  transform: translateY(-10px);
+.iso-plane-layer polygon {
+  transition: stroke 0.3s ease, fill 0.3s ease;
 }
 
-/* Floating animation on planes */
-@keyframes floatLayer04 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-@keyframes floatLayer03 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-@keyframes floatLayer02 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
-
-.plane-04 { animation: floatLayer04 4s ease-in-out infinite; }
-.plane-03 { animation: floatLayer03 4s ease-in-out infinite 0.5s; }
-.plane-02 { animation: floatLayer02 4s ease-in-out infinite 1s; }
+.iso-plane-layer.active polygon {
+  stroke: var(--color-sun);
+  fill: rgba(255, 139, 62, 0.25);
+}
 
 /* ==========================================================================
-   MASTER PIPELINE FLOWCHART ARCHITECTURE SECTION (USER IMAGE 5)
+   ARCHITECTURE PLAN SECTION (NATIVE HIGH-TECH FLOWCHART REDESIGN)
    ========================================================================== */
-.master-flowchart-section {
-  padding: 90px 0;
+.architecture-plan-section {
+  padding: 100px 0;
   position: relative;
   background: var(--color-black);
   border-bottom: 1px solid var(--color-stroke-3);
 }
 
-.flowchart-display-frame {
-  padding: 24px;
-  text-align: center;
-  background: #060504;
-  overflow: hidden;
-}
-
-.flowchart-img {
-  width: 100%;
-  max-width: 820px;
-  height: auto;
+.flowchart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 960px;
   margin: 0 auto;
-  border-radius: 4px;
-  border: 1px solid var(--color-stroke-3);
-  display: block;
-  transition: transform 0.3s ease;
+  position: relative;
 }
 
-.flowchart-img:hover {
-  transform: scale(1.01);
+/* Flowchart Stage Block */
+.flow-stage {
+  position: relative;
+  background: var(--color-night);
+  border: 1px solid var(--color-stroke-3);
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.flow-stage:hover {
+  border-color: var(--color-sun);
+  box-shadow: 0 0 25px rgba(255, 139, 62, 0.08);
+}
+
+.flow-stage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(223, 216, 211, 0.08);
+}
+
+.flow-stage-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-dust);
+  letter-spacing: 0.04em;
+}
+
+.flow-stage-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-sun);
+  background: rgba(255, 139, 62, 0.12);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.flow-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.flow-node-card {
+  background: var(--color-midnight);
+  border: 1px solid var(--color-stroke-3);
+  padding: 14px;
+  border-radius: 3px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.flow-node-card:hover {
+  border-color: var(--color-sun);
+  transform: translateY(-2px);
+}
+
+.flow-node-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-dust);
+  margin-bottom: 4px;
+}
+
+.flow-node-desc {
+  font-size: 12px;
+  color: var(--color-stroke-2);
+  line-height: 1.4;
+}
+
+/* Flow Connector Arrow */
+.flow-arrow-down {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  position: relative;
+}
+
+.flow-arrow-line {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-stroke-3), var(--color-sun));
+  position: relative;
+}
+
+.flow-arrow-line::after {
+  content: '▼';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: var(--color-sun);
+}
+
+/* Decision Node Diamond Box */
+.decision-node-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.decision-diamond {
+  background: rgba(255, 139, 62, 0.1);
+  border: 1px solid var(--color-sun);
+  padding: 12px 28px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-sun);
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(255, 139, 62, 0.15);
+}
+
+.decision-branch-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.branch-pass {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 12px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.branch-retry {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 12px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 12px;
 }
 
 /* ==========================================================================
-   INTERACTIVE 8-AGENT NEURAL PIPELINE (FIXED NO HORIZONTAL OVERFLOW)
-   ========================================================================== */
+   INTERACTIVE 8-AGENT NEURAL PIPELINE
+   ========================================================================= */
 .section-wrapper {
   padding: 90px 0;
   position: relative;
@@ -813,7 +936,6 @@ nav {
   font-weight: 600;
 }
 
-/* Code box wrapping (zero ugly white scrollbar) */
 .agent-code-box {
   background: #020202;
   border: 1px solid var(--color-stroke-3);
@@ -833,7 +955,7 @@ nav {
 .ck-cm { color: #6b6b6b; }
 
 /* ==========================================================================
-   SIDE-BY-SIDE VERIFICATION PROOF (AUDIT)
+   SIDE-BY-SIDE VERIFICATION PROOF
    ========================================================================== */
 .audit-split-grid {
   display: grid;
@@ -1107,7 +1229,7 @@ footer {
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAVIGATION (GITHUB OPTION REMOVED) -->
 <nav>
   <div class="container nav-inner">
     <a href="/" class="nav-brand" aria-label="Pressline Home">
@@ -1123,9 +1245,8 @@ footer {
     <div class="nav-menu">
       <a href="#pipeline">ARCHITECTURE</a>
       <a href="#stack">STACK</a>
-      <a href="#flowchart">FLOWCHART</a>
+      <a href="#flowchart">PLAN</a>
       <a href="#pricing">PRICING</a>
-      <a href="https://github.com/Techsynx/pressline" target="_blank" rel="noopener">GITHUB</a>
     </div>
 
     <div>
@@ -1136,7 +1257,7 @@ footer {
   </div>
 </nav>
 
-<!-- HERO SECTION (FIXED TIGHT FIT - NO EMPTY SPACE ON MOBILE) -->
+<!-- HERO SECTION -->
 <header class="hero-wrapper">
   <div class="container">
     <div class="hero-layout">
@@ -1223,12 +1344,10 @@ footer {
       <div class="mono-label" style="margin-bottom: 16px;">THE BOTTLENECK</div>
 
       <div class="orbit-arc-wrap">
-        <!-- Top Arc SVG -->
         <svg class="orbit-arc-svg" viewBox="0 0 740 215" fill="none">
           <path d="M2.66 212.25C39.83 147.87 93.3 94.4 157.68 57.24C222.06 20.07 295.09 0.5 369.43 0.5C443.77 0.5 516.8 20.07 581.18 57.24C645.56 94.4 699.02 147.87 736.19 212.25" stroke="#ff8b3e" stroke-width="1.5" stroke-dasharray="4,4"/>
         </svg>
 
-        <!-- Floating PDF Card -->
         <div class="floating-doc-card card-top-stack">
           <div class="doc-icon">PDF</div>
           <div class="doc-meta">
@@ -1238,7 +1357,6 @@ footer {
         </div>
       </div>
 
-      <!-- Core Provocative Statement -->
       <div class="problem-big-statement scroll-reveal">
         <h2>84% of digital brands publish with AI, but &lt;5% achieve sustained Google rankings without detection penalties.</h2>
         <p class="sub-bottleneck">
@@ -1246,13 +1364,11 @@ footer {
         </p>
       </div>
 
-      <!-- Bottom Trajectory Arc & Floating Email Card -->
       <div class="orbit-arc-wrap">
         <svg class="orbit-arc-svg" viewBox="0 0 740 215" fill="none" style="transform: scaleY(-1);">
           <path d="M2.66 212.25C39.83 147.87 93.3 94.4 157.68 57.24C222.06 20.07 295.09 0.5 369.43 0.5C443.77 0.5 516.8 20.07 581.18 57.24C645.56 94.4 699.02 147.87 736.19 212.25" stroke="#ff8b3e" stroke-width="1.5" stroke-dasharray="4,4"/>
         </svg>
 
-        <!-- Floating SBP / Remittance Notification Card -->
         <div class="floating-doc-card card-bottom-stack">
           <div class="doc-icon" style="background: rgba(34, 197, 94, 0.15); color: var(--color-success); border-color: rgba(34, 197, 94, 0.3);">SBP</div>
           <div class="doc-meta">
@@ -1265,25 +1381,25 @@ footer {
   </div>
 </section>
 
-<!-- 3D ISOMETRIC ARCHITECTURE STACK SECTION (ANIMATED HOVER & ELEVATION) -->
+<!-- 3D ISOMETRIC ARCHITECTURE STACK SECTION (FIXED BASE TRANSFORMS) -->
 <section id="stack" class="isometric-stack-section">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
       <div class="mono-label">LAYERED REASONING ENGINE</div>
       <h2>Four-Tier Agentic Architecture Stack</h2>
-      <p>How raw real estate data transforms into audited, rankable, and deployed publishing assets.</p>
+      <p>How raw data transforms into audited, rankable, and deployed publishing assets.</p>
     </div>
 
     <div class="isometric-layout-grid">
       <!-- Left Features Column -->
       <div class="stack-card-col">
-        <div class="stack-feature-card scroll-reveal" id="card-layer1" onmouseenter="highlightLayer(1)" onmouseleave="resetLayers()">
+        <div class="stack-feature-card scroll-reveal" id="card-layer1" onmouseenter="highlightStackLayer(1)" onmouseleave="resetStackLayers()">
           <div class="mono-label" style="font-size: 10px; margin-bottom: 4px;">LAYER 01</div>
           <h3>Data Intake</h3>
-          <p>Continuous ingestion of developer payment plans, FBR tax circulars, and LDA municipal records.</p>
+          <p>Ingestion of developer payment plans, FBR tax circulars, and LDA municipal records.</p>
         </div>
 
-        <div class="stack-feature-card scroll-reveal" id="card-layer3" onmouseenter="highlightLayer(3)" onmouseleave="resetLayers()">
+        <div class="stack-feature-card scroll-reveal" id="card-layer3" onmouseenter="highlightStackLayer(3)" onmouseleave="resetStackLayers()">
           <div class="mono-label" style="font-size: 10px; margin-bottom: 4px;">LAYER 03</div>
           <h3>Governance Logic</h3>
           <p>Adversarial ZeroGPT auditor, strict legal tax audit hedging, and mathematical yield checks.</p>
@@ -1294,25 +1410,25 @@ footer {
       <div class="isometric-canvas-frame scroll-reveal">
         <svg class="iso-layer-svg" viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Layer 4 (Top: Execution Hub) -->
-          <g id="iso-layer-4" class="iso-plane plane-04" transform="translate(20, 20)" onmouseenter="highlightLayer(4)" onmouseleave="resetLayers()">
+          <g id="iso-layer-4" class="iso-plane-layer" transform="translate(20, 20)" onmouseenter="highlightStackLayer(4)" onmouseleave="resetStackLayers()">
             <polygon points="180,0 340,80 180,160 20,80" fill="rgba(255, 139, 62, 0.14)" stroke="#ff8b3e" stroke-width="1.8"/>
             <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#fbf6ec">04 // EXECUTION HUB</text>
           </g>
 
           <!-- Layer 3 (Governance Logic) -->
-          <g id="iso-layer-3" class="iso-plane plane-03" transform="translate(20, 90)" onmouseenter="highlightLayer(3)" onmouseleave="resetLayers()">
+          <g id="iso-layer-3" class="iso-plane-layer" transform="translate(20, 90)" onmouseenter="highlightStackLayer(3)" onmouseleave="resetStackLayers()">
             <polygon points="180,0 340,80 180,160 20,80" fill="rgba(34, 197, 94, 0.1)" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4,3"/>
             <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#22c55e">03 // GOVERNANCE LOGIC</text>
           </g>
 
           <!-- Layer 2 (Workflow Logic) -->
-          <g id="iso-layer-2" class="iso-plane plane-02" transform="translate(20, 160)" onmouseenter="highlightLayer(2)" onmouseleave="resetLayers()">
+          <g id="iso-layer-2" class="iso-plane-layer" transform="translate(20, 160)" onmouseenter="highlightStackLayer(2)" onmouseleave="resetStackLayers()">
             <polygon points="180,0 340,80 180,160 20,80" fill="rgba(58, 134, 255, 0.1)" stroke="#3a86ff" stroke-width="1.5"/>
             <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#dfd8d3">02 // WORKFLOW LOGIC</text>
           </g>
 
           <!-- Layer 1 (Bottom: Data Intake) -->
-          <g id="iso-layer-1" class="iso-plane" transform="translate(20, 230)" onmouseenter="highlightLayer(1)" onmouseleave="resetLayers()">
+          <g id="iso-layer-1" class="iso-plane-layer" transform="translate(20, 230)" onmouseenter="highlightStackLayer(1)" onmouseleave="resetStackLayers()">
             <polygon points="180,0 340,80 180,160 20,80" fill="rgba(39, 34, 31, 0.95)" stroke="#54504e" stroke-width="2"/>
             <polygon points="180,160 340,80 340,110 180,190 20,110 20,80" fill="rgba(20, 16, 14, 0.95)" stroke="#54504e" stroke-width="1.5"/>
             <text x="180" y="85" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ff8b3e">01 // DATA INTAKE</text>
@@ -1322,13 +1438,13 @@ footer {
 
       <!-- Right Features Column -->
       <div class="stack-card-col">
-        <div class="stack-feature-card scroll-reveal" id="card-layer2" onmouseenter="highlightLayer(2)" onmouseleave="resetLayers()">
+        <div class="stack-feature-card scroll-reveal" id="card-layer2" onmouseenter="highlightStackLayer(2)" onmouseleave="resetStackLayers()">
           <div class="mono-label" style="font-size: 10px; margin-bottom: 4px;">LAYER 02</div>
           <h3>Workflow Logic</h3>
           <p>Maps multi-format SEO blueprints and orchestrates Groq/Gemini LLM reasoning agents.</p>
         </div>
 
-        <div class="stack-feature-card scroll-reveal" id="card-layer4" onmouseenter="highlightLayer(4)" onmouseleave="resetLayers()">
+        <div class="stack-feature-card scroll-reveal" id="card-layer4" onmouseenter="highlightStackLayer(4)" onmouseleave="resetStackLayers()">
           <div class="mono-label" style="font-size: 10px; margin-bottom: 4px;">LAYER 04</div>
           <h3>Execution Hub</h3>
           <p>Zero-touch automated SSH sync to LiteSpeed servers and green Git contribution tracking.</p>
@@ -1338,19 +1454,167 @@ footer {
   </div>
 </section>
 
-<!-- MASTER PIPELINE FLOWCHART ARCHITECTURE (USER DIAGRAM) -->
-<section id="flowchart" class="master-flowchart-section">
+<!-- ARCHITECTURE PLAN SECTION (RECODED NATIVE FLOWCHART WITH LIVE CONNECTORS) -->
+<section id="flowchart" class="architecture-plan-section">
   <div class="container">
     <div class="section-title-wrap scroll-reveal">
-      <div class="mono-label">END-TO-END FLOWCHART</div>
-      <h2>Production Pipeline Architecture</h2>
+      <div class="mono-label">END-TO-END SPECIFICATION</div>
+      <h2>Architecture Plan</h2>
       <p>The complete 6-stage lifecycle from raw trigger to verified live deployment.</p>
     </div>
 
-    <div class="flowchart-display-frame square-corner-frame scroll-reveal">
-      <div class="corner-tl"></div><div class="corner-tr"></div>
-      <div class="corner-bl"></div><div class="corner-br"></div>
-      <img src="assets/images/pipeline-architecture.png" alt="Pressline Master Architecture Flowchart" class="flowchart-img" loading="lazy">
+    <div class="flowchart-container scroll-reveal">
+      <!-- Stage 1: Core Data Sources -->
+      <div class="flow-stage square-corner-frame">
+        <div class="corner-tl"></div><div class="corner-tr"></div>
+        <div class="corner-bl"></div><div class="corner-br"></div>
+        <div class="flow-stage-header">
+          <div class="flow-stage-title">1. Core Data Sources &amp; Automated Triggers</div>
+          <div class="flow-stage-badge">CRON 3X DAILY + JITTER</div>
+        </div>
+        <div class="flow-cards-grid">
+          <div class="flow-node-card">
+            <div class="flow-node-title">Search Catalysts</div>
+            <div class="flow-node-desc">2026 Real Estate Drivers &amp; Queries</div>
+          </div>
+          <div class="flow-node-card">
+            <div class="flow-node-title">History Database</div>
+            <div class="flow-node-desc">posts.json (100% Deduplication)</div>
+          </div>
+          <div class="flow-node-card">
+            <div class="flow-node-title">Ground-Truth KB</div>
+            <div class="flow-node-desc">knowledgeBase.js Verified Rules</div>
+          </div>
+          <div class="flow-node-card">
+            <div class="flow-node-title">Actions Scheduler</div>
+            <div class="flow-node-desc">Random Jitter 3-25 mins (Anti-Bot)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
+
+      <!-- Stage 2: Trend & Keyword Discovery -->
+      <div class="flow-stage square-corner-frame">
+        <div class="corner-tl"></div><div class="corner-tr"></div>
+        <div class="corner-bl"></div><div class="corner-br"></div>
+        <div class="flow-stage-header">
+          <div class="flow-stage-title">2. Trend &amp; Keyword Discovery</div>
+          <div class="flow-stage-badge">AGENT 1 // GROQ + GEMINI</div>
+        </div>
+        
+        <div class="decision-node-wrap">
+          <div class="decision-diamond">AI Trend Discovery Engine</div>
+        </div>
+
+        <div class="flow-cards-grid" style="margin-top: 16px;">
+          <div class="flow-node-card">
+            <div class="flow-node-title">100% Unique Long-Tail SEO</div>
+            <div class="flow-node-desc">Title &amp; Canonical URL Slug</div>
+          </div>
+          <div class="flow-node-card">
+            <div class="flow-node-title">Commercial Keywords</div>
+            <div class="flow-node-desc">High-Intent Buyer Search Intent</div>
+          </div>
+          <div class="flow-node-card">
+            <div class="flow-node-title">Archetype Assignment</div>
+            <div class="flow-node-desc">Deep-Dive / Matrix / Legal / Editorial</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
+
+      <!-- Stage 3: Architecture & Fact-Verified Drafting -->
+      <div class="flow-stage square-corner-frame">
+        <div class="corner-tl"></div><div class="corner-tr"></div>
+        <div class="corner-bl"></div><div class="corner-br"></div>
+        <div class="flow-stage-header">
+          <div class="flow-stage-title">3. Architecture &amp; Fact-Verified Drafting</div>
+          <div class="flow-stage-badge">AGENT 2 &amp; AGENT 3</div>
+        </div>
+        <div class="flow-cards-grid">
+          <div class="flow-node-card">
+            <div class="flow-node-title">Agent 2: SEO Architect</div>
+            <div class="flow-node-desc">TOC Headings, Read Time &amp; FAQ Schema</div>
+          </div>
+          <div class="flow-node-card">
+            <div class="flow-node-title">Agent 3: Master Writer v15</div>
+            <div class="flow-node-desc">1,400+ Words, 100% Reconciled Math (20+65+15=100)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
+
+      <!-- Stage 4: Anti-AI Humanization & Quality Gate -->
+      <div class="flow-stage square-corner-frame">
+        <div class="corner-tl"></div><div class="corner-tr"></div>
+        <div class="corner-bl"></div><div class="corner-br"></div>
+        <div class="flow-stage-header">
+          <div class="flow-stage-title">4. Anti-AI Humanization &amp; Adversarial Quality Gate</div>
+          <div class="flow-stage-badge">AGENT 4 &amp; AGENT 5</div>
+        </div>
+
+        <div class="decision-node-wrap">
+          <div class="decision-diamond">Agent 5: Adversarial Critic Gate</div>
+        </div>
+
+        <div class="decision-branch-row">
+          <div class="branch-retry">
+            <div style="font-weight: 700; color: var(--color-error); margin-bottom: 4px;">AI Score &gt; 15% OR Math Invalid</div>
+            <div>Triggers Agent 4 (Humanizer v12) to purge cliches, strip Unicode watermarks, and re-balance sentence burstiness.</div>
+          </div>
+          <div class="branch-pass">
+            <div style="font-weight: 700; color: var(--color-success); margin-bottom: 4px;">Approved: ZeroGPT &le; 15%</div>
+            <div>Verified mathematical consistency and factual accuracy passed directly to asset compiler.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
+
+      <!-- Stage 5: Asset Generation & Static Compilation -->
+      <div class="flow-stage square-corner-frame">
+        <div class="corner-tl"></div><div class="corner-tr"></div>
+        <div class="corner-bl"></div><div class="corner-br"></div>
+        <div class="flow-stage-header">
+          <div class="flow-stage-title">5. Asset Generation &amp; Static Compilation</div>
+          <div class="flow-stage-badge">AGENT 6 &amp; AGENT 7</div>
+        </div>
+        <div class="flow-cards-grid">
+          <div class="flow-node-card">
+            <div class="flow-node-title">Agent 6: Studio Graphic</div>
+            <div class="flow-node-desc">Deterministic 16:9 Vector SVG Cover Artwork</div>
+          </div>
+          <div class="flow-node-card">
+            <div class="flow-node-title">Agent 7: Static Site Builder</div>
+            <div class="flow-node-desc">Schema.org JSON-LD, sitemap.xml, feed.xml</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow-down"><div class="flow-arrow-line"></div></div>
+
+      <!-- Stage 6: Live Production Deployment & Git Sync -->
+      <div class="flow-stage square-corner-frame">
+        <div class="corner-tl"></div><div class="corner-tr"></div>
+        <div class="corner-bl"></div><div class="corner-br"></div>
+        <div class="flow-stage-header">
+          <div class="flow-stage-title">6. Live Production Deployment &amp; Git Attribution</div>
+          <div class="flow-stage-badge">AGENT 8 // ZERO-TOUCH</div>
+        </div>
+        <div class="flow-cards-grid">
+          <div class="flow-node-card">
+            <div class="flow-node-title">Agent 8: Hostinger SSH Deployer</div>
+            <div class="flow-node-desc">SCP Sync to 37.44.245.89 (755/644 Permissions)</div>
+          </div>
+          <div class="flow-node-card">
+            <div class="flow-node-title">GitHub Main Branch Push</div>
+            <div class="flow-node-desc">Authored by Huzaifa Malik (Green Dots Active)</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1646,7 +1910,7 @@ footer {
         <ul>
           <li><a href="#pipeline">8-Agent Pipeline</a></li>
           <li><a href="#stack">Isometric Stack</a></li>
-          <li><a href="#flowchart">Flowchart</a></li>
+          <li><a href="#flowchart">Architecture Plan</a></li>
           <li><a href="#pricing">Pricing Matrix</a></li>
         </ul>
       </div>
@@ -1666,13 +1930,12 @@ footer {
         <ul>
           <li><a href="mailto:exhuzaifa@gmail.com">exhuzaifa@gmail.com</a></li>
           <li><a href="https://wa.me/923268282409" target="_blank" rel="noopener">WhatsApp Direct</a></li>
-          <li><a href="https://github.com/Techsynx/pressline" target="_blank" rel="noopener">Repository</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-credit-bar">
-      <div>&copy; 2026 Pressline Engine. Built by Huzaifa Malik (Techsynx). All rights reserved.</div>
+      <div>&copy; 2026 Pressline Engine. Built by Huzaifa Malik. All rights reserved.</div>
       <div>Attribution: Huzaifa Malik &lt;exhuzaifa@gmail.com&gt;</div>
     </div>
   </div>
@@ -1705,24 +1968,26 @@ function switchVideo(idx) {
   btns.forEach((b, i) => b.classList.toggle('active', i === idx));
 }
 
-// Isometric Stack Highlight Sync
-function highlightLayer(layerNum) {
-  for (let i = 1; i <= 4; i++) {
-    const plane = document.getElementById('iso-layer-' + i);
-    const card = document.getElementById('card-layer' + i);
-    if (plane) plane.style.opacity = (i === layerNum) ? '1' : '0.35';
-    if (plane && i === layerNum) plane.style.transform = 'translateY(-12px)';
-    if (card) card.classList.toggle('highlighted', i === layerNum);
-  }
-}
-
-function resetLayers() {
+// Isometric Stack Highlight Sync (Zero Collapse Bug)
+function highlightStackLayer(layerNum) {
   for (let i = 1; i <= 4; i++) {
     const plane = document.getElementById('iso-layer-' + i);
     const card = document.getElementById('card-layer' + i);
     if (plane) {
+      plane.classList.toggle('active', i === layerNum);
+      plane.style.opacity = (i === layerNum) ? '1' : '0.4';
+    }
+    if (card) card.classList.toggle('highlighted', i === layerNum);
+  }
+}
+
+function resetStackLayers() {
+  for (let i = 1; i <= 4; i++) {
+    const plane = document.getElementById('iso-layer-' + i);
+    const card = document.getElementById('card-layer' + i);
+    if (plane) {
+      plane.classList.remove('active');
       plane.style.opacity = '1';
-      plane.style.transform = 'none';
     }
     if (card) card.classList.remove('highlighted');
   }
